@@ -1,3 +1,5 @@
+import serverReq from './ServerRequest'
+
 class Paper {
 	constructor(name) {
 		this.name = name;

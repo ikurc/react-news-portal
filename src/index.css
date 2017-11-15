@@ -3,3 +3,56 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+button {
+  cursor: pointer;
+}
+
+.paper-input {
+  margin: 5px 0;
+}
+
+.input-user {
+  margin: 0 5px;
+}
+
+.Publisher {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 20px auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.newsArea {
+  min-height: 120px;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid black;
+  text-align: left;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.Publishers {
+  display: flex;
+  background: #fff;
+}
+
+.Subscriber {
+  min-width: 60px;
+  min-height: 80px;
+  margin: 0 20px;
+}
+
+.Subscribers {
+  padding: 40px 0;
+  text-align: center;
+  background-color: #403F48;
+}
+
+.subscribers-content {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}

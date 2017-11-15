@@ -5,7 +5,7 @@ class Robot extends User {
 		super(`${name}_bot`)
 	}
 
-    handleUpdate = (data) => {
+    handleUpdate(data) {
         console.log(`${this.name} recieved in bytes: ${data}`)
     }
 }

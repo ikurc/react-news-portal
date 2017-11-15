@@ -1,3 +1,7 @@
+import Paper from './Paper'
+import Human from './Human'
+import Robot from './Robot'
+
 class Storage {
     constructor() {
         this.papers = [
@@ -5,7 +9,10 @@ class Storage {
             new Paper("The Independent"),
             new Paper("The New York Times")
         ]
-        this.users = []
+        this.users = [
+          // new Robot("example"),
+          // new Human("Igor")
+        ]
         this.news = []
     }
 
