@@ -8,17 +8,27 @@ class App extends Component {
       super(props);
 
       this.state = {
-        portal: this.props.portal,
-        papers: this.props.papers,
-        users: this.props.users
+        "portal": this.props.portal,
+        "papers": this.props.papers,
+        "users": this.props.users,
+        "news": this.props.news
       };
     }
 
+    updateUsersState = (user) => {
+      this.setState( {"users": [...this.state.users, user]} )
+    }
+
+    updateNewsState = (newsItem) => {
+      this.setState( {"news": [...this.state.news, newsItem]} )
+    }
+
     render() {
+      console.log(this.state)
       return (
           <div className="App">
-            <Publishers papers={this.state.papers}/>
-            <Subscibers users={this.state.users}/>
+            <Publishers update={this.updateNewsState} papers={this.state.papers}/>
+            <Subscibers portal={this.state.portal} papers={this.state.papers} update={this.updateUsersState} users={this.state.users}/>
           </div>
       );
     }

@@ -6,6 +6,12 @@ import Portal from './model/Portal'
 import Storage from './model/Storage'
 
 const portal = new Portal("React Portal")
-const storage = new Storage()
+const storage = new Storage(portal)
 
-ReactDOM.render(<App portal={portal} papers={storage.papers} users={storage.users}/>, document.getElementById('root'));
+ReactDOM.render(<App
+  portal={portal}
+  papers={storage.papers}
+  users={storage.users}
+  news={storage.news}/>,
+  document.getElementById('root')
+);

@@ -2,7 +2,6 @@ class User {
 	constructor(name) {
 		this.name = name;
 		this.ID = User.generateID();
-		this.handleUpdate = this.handleUpdate.bind(this)
 	}
 
 	static generateID(a,b) {

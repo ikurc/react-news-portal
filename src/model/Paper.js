@@ -1,28 +1,30 @@
 import serverReq from './ServerRequest'
 
 class Paper {
-	constructor(name) {
+	// hardcode
+	constructor(name, portal) {
 		this.name = name;
-		this.portals = []
+		this.portals = [portal.notify] //!!!!!!!tak ne nado
+
 	}
 
-	subscribePortal(fn) {
+	subscribePortal = (fn) => {
 		this.portals.push(fn);
 	}
 
-	unSubscribePortal(fn) {
+	unSubscribePortal = (fn) => {
 		this.portals = this.portals.filter(portal => portal !== fn)
 	}
 
-	notifyPortals(data) {
+	notifyPortals = (data) => {
 		this.portals.forEach(portal => portal(this.name, data))
 	}
 
-	getFromServer() {
+	getFromServer = () => {
 		serverReq.fetchNews('docs/news.json', this);
 	}
 
-	getFromInput(data) {
+	getFromInput = (data) => {
 		this.notifyPortals(data)
 	}
 }

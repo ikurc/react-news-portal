@@ -3,16 +3,13 @@ import Human from './Human'
 import Robot from './Robot'
 
 class Storage {
-    constructor() {
+    constructor(portal) { //tak toje ne nado
         this.papers = [
-            new Paper("The Guardian"),
-            new Paper("The Independent"),
-            new Paper("The New York Times")
+            new Paper("The Guardian", portal), ///tak ne nado eto dlya testa
+            new Paper("The Independent", portal), ///tak ne nado eto dlya testa
+            new Paper("The New York Times", portal) ///tak ne nado eto dlya testa
         ]
-        this.users = [
-          // new Robot("example"),
-          // new Human("Igor")
-        ]
+        this.users = []
         this.news = []
     }
 
@@ -33,7 +30,7 @@ class Storage {
 
     deleteUser(ID){
         let usersList = this.users;
-        this.users = usersList.filter(user => user.ID != ID);
+        this.users = usersList.filter(user => user.ID !== ID);
     }
 
     // News methods
@@ -51,7 +48,7 @@ class Storage {
 
     deleteNews(ID){
         let newsList = this.news;
-        this.news = newsList.filter(news => news.ID != ID);
+        this.news = newsList.filter(news => news.ID !== ID);
     }
 }
 

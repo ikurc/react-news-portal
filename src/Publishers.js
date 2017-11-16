@@ -9,7 +9,7 @@ class Publishers extends Component {
     render() {
       return (
           <div className="Publishers">
-            {this.props.papers.map((paper,i) => <Publisher key={i} paperName={paper.name}/>)}
+            {this.props.papers.map((paper,i) => <Publisher key={i} paper={paper} update={this.props.update} paperName={paper.name}/>)}
           </div>
       );
     }

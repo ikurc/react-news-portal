@@ -3,21 +3,25 @@ class EventEmitter {
 		this.events = {}
 	}
 
-	subscribe(eventType, fn) {
+	subscribe = (eventType, fn) => {
 		if (!this.events[eventType]) {
 			this.events[eventType] = []
 		}
 		this.events[eventType].push(fn)
 	}
 
-	unSubscribe(eventType, fnToRemove) {
+	unSubscribe = (eventType, fnToRemove) => {
 		this.events[eventType].filter(fn => fn != fnToRemove);
 		// if last delete
 	}
 
 	notify = (eventType, data) => {
 		let readers = this.events[eventType];
-		readers.forEach(reader => reader(data))
+		if (readers) {
+			readers.forEach(reader => reader(data))
+		} else {
+			throw new Error("Any reader isnt exists!")
+		}
 	}
 }
 
