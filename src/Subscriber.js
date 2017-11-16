@@ -11,9 +11,9 @@ class Subscriber extends Component {
 
     render() {
       return (
-          <div className="Subscriber">
-            <span className="user-name">{this.props.user.name}</span>
-            {this.props.papers.map((paper, i) => <button onClick={this.subscribeTo(paper)} className="sub-btn" key={i}>{paper.name}</button>)}
+          <div className="subscriber">
+            <span className="subscriber-name">{this.props.user.name}</span>
+            {this.props.papers.map((paper, i) => <button onClick={this.subscribeTo(paper)} className="subscriber-btn" key={i}>{paper.name}</button>)}
           </div>
       );
     }

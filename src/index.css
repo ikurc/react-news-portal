@@ -4,19 +4,24 @@ body {
   font-family: sans-serif;
 }
 
+input {
+  border: none;
+  padding: 5px 20px 0;
+  outline: none;
+  margin: 0;
+  line-height: 1.5;
+}
+
 button {
   cursor: pointer;
 }
 
-.paper-input {
-  margin: 5px 0;
+.publishers {
+  display: flex;
+  background: #E1D1C1;
 }
 
-.input-user {
-  margin: 0 5px;
-}
-
-.Publisher {
+.publisher {
   display: flex;
   flex-direction: column;
   width: 200px;
@@ -25,7 +30,26 @@ button {
   text-align: center;
 }
 
-.newsArea {
+.publisher-input {
+  margin: 5px 0;
+  max-width: 200px;
+  padding-left: 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  transition: all 1s;
+  font-size: 12px;
+  text-indent: 10px;
+}
+
+.publisher-input:focus {
+	border-bottom: 2px solid black;
+	transition: all 1s;
+}
+
+.input-user {
+  margin: 0 5px;
+}
+
+.publisher-news-area {
   min-height: 120px;
   background: rgba(0, 0, 0, 0.1);
   border: 1px solid black;
@@ -34,21 +58,29 @@ button {
   font-size: 12px;
 }
 
-.Publishers {
-  display: flex;
-  background: #fff;
+.subscribers {
+  padding: 40px 0;
+  text-align: center;
+  background-color: #3C556B;
 }
 
-.Subscriber {
+.subscriber {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
   min-width: 60px;
   min-height: 80px;
   margin: 0 20px;
 }
 
-.Subscribers {
-  padding: 40px 0;
-  text-align: center;
-  background-color: #403F48;
+.subscriber-name {
+  margin: 2px 0;
+}
+
+.subscriber-btn {
+  margin: 5px 0;
+  padding: 5px;
 }
 
 .subscribers-content {

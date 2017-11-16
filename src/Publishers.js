@@ -8,7 +8,7 @@ class Publishers extends Component {
 
     render() {
       return (
-          <div className="Publishers">
+          <div className="publishers">
             {this.props.papers.map((paper,i) => <Publisher key={i} paper={paper} update={this.props.update} paperName={paper.name}/>)}
           </div>
       );

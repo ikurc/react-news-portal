@@ -6,29 +6,29 @@ import './App.css';
 class App extends Component {
     constructor(props){
       super(props);
-
-      this.state = {
-        "portal": this.props.portal,
-        "papers": this.props.papers,
-        "users": this.props.users,
-        "news": this.props.news
-      };
+      this.state = {};
     }
 
-    updateUsersState = (user) => {
-      this.setState( {"users": [...this.state.users, user]} )
+    updateState = (data) => {
+      this.setState(data)
     }
 
-    updateNewsState = (newsItem) => {
-      this.setState( {"news": [...this.state.news, newsItem]} )
+    сomponentDidMount() {
+      // подписаться на изменения модели
     }
+
+    componentWillUnmount() {
+      // отписаться от изменений модели
+    }
+
+    // вызывать методы у контролла / пробрасывать методы
 
     render() {
-      console.log(this.state)
+      console.log(this.props)
       return (
           <div className="App">
-            <Publishers update={this.updateNewsState} papers={this.state.papers}/>
-            <Subscibers portal={this.state.portal} papers={this.state.papers} update={this.updateUsersState} users={this.state.users}/>
+            <Publishers/>
+            <Subscibers/>
           </div>
       );
     }

@@ -18,9 +18,9 @@ class Subscribers extends Component {
 
     render() {
       return (
-        <div className="Subscribers">
+        <div className="subscribers">
           <input onKeyPress={this.addUser} className="input-user" type="text"/>
-          <button className="add-user-btn">Add user</button>
+          <button className="add-subscriber-btn">Add user</button>
 
           <div className="subscribers-content">
             {this.props.users.map((user,i) => <Subscriber key={i} portal={this.props.portal} papers={this.props.papers} user={user}/>)}

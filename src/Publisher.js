@@ -12,7 +12,6 @@ class Publisher extends Component {
       if (e.key === 'Enter') {
         console.log(this.props)
         let news = new News(`${value}`)
-
         this.props.update(news);
         this.props.paper.notifyPortals(news.title)
       }
@@ -20,11 +19,11 @@ class Publisher extends Component {
 
     render() {
       return (
-          <div className="Publisher">
-            <span className="paper-name">{this.props.paperName}</span>
-            <div className="newsArea" cols="20" rows="10">News here...</div>
-            <input onKeyPress={this.addNews} className="paper-input" type="text"/>
-            <button className="paper-btn">Send news</button>
+          <div className="publisher">
+            <span className="publisher-name">{this.props.paperName}</span>
+            <div className="publisher-news-area" cols="20" rows="10">News here...</div>
+            <input onKeyPress={this.addNews} className="publisher-input" type="text"/>
+            <button className="publisher-btn">Send news</button>
           </div>
       );
     }
