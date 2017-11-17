@@ -10,10 +10,12 @@ class Subscriber extends Component {
     }
 
     render() {
+      const userName = this.props.user.name
+
       return (
           <div className="subscriber">
-            <span className="subscriber-name">{this.props.user.name}</span>
-            {this.props.papers.map((paper, i) => <button onClick={this.subscribeTo(paper)} className="subscriber-btn" key={i}>{paper.name}</button>)}
+            <span className="subscriber-name">{userName}</span>
+            {/* {this.props.papers.map((paper, i) => <button onClick={this.subscribeTo(paper)} className="subscriber-btn" key={i}>{paper.name}</button>)} */}
           </div>
       );
     }

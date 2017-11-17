@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header';
 import Publishers from './Publishers';
 import Subscibers from './Subscibers';
 import './App.css';
@@ -6,30 +7,39 @@ import './App.css';
 class App extends Component {
     constructor(props){
       super(props);
-      this.state = {};
+      this.state = {
+        portal: this.props.portal, 
+        news: this.props.portal.storage.news
+      }
     }
 
-    updateState = (data) => {
-      this.setState(data)
+    updateState = (news) => {
+      this.setState({
+        news: [...this.state.news, news]
+      })
+    }
+    // updateState = (data) => {
+    //   this.setState(data)
+    // }
+
+    componentWillMount() {
+      this.props.portal.on(this.updateState)
     }
 
-    сomponentDidMount() {
-      // подписаться на изменения модели
+    handleUpdate = (data) => {
+      this.props.portal.trigger(data)
     }
-
-    componentWillUnmount() {
-      // отписаться от изменений модели
-    }
-
-    // вызывать методы у контролла / пробрасывать методы
 
     render() {
-      console.log(this.props)
+      console.log(this.state)
+      const name = this.props.portal.name
+      const papers = this.props.portal.storage.papers
       return (
-          <div className="App">
-            <Publishers/>
-            <Subscibers/>
-          </div>
+        <div className="App">
+          <Header portalName={name}/>
+          <Publishers papers={papers} update={this.updateState}/>
+          {/* <Subscibers/> */}
+        </div>
       );
     }
 }

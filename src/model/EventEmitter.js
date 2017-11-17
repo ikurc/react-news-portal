@@ -12,7 +12,6 @@ class EventEmitter {
 
 	unSubscribe = (eventType, fnToRemove) => {
 		this.events[eventType].filter(fn => fn != fnToRemove);
-		// if last delete
 	}
 
 	notify = (eventType, data) => {

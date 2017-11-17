@@ -17,13 +17,14 @@ class Subscribers extends Component {
     }
 
     render() {
+      const users = this.props.users
+
       return (
         <div className="subscribers">
           <input onKeyPress={this.addUser} className="input-user" type="text"/>
           <button className="add-subscriber-btn">Add user</button>
-
           <div className="subscribers-content">
-            {this.props.users.map((user,i) => <Subscriber key={i} portal={this.props.portal} papers={this.props.papers} user={user}/>)}
+            {users.map((user,i) => <Subscriber key={i} user={user}/>)}
           </div>
 
         </div>

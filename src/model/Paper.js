@@ -2,10 +2,8 @@ import serverReq from './ServerRequest'
 
 class Paper {
 	// hardcode
-	constructor(name, portal) {
+	constructor(name) {
 		this.name = name;
-		this.portals = [portal.notify] //!!!!!!!tak ne nado
-
 	}
 
 	subscribePortal = (fn) => {
