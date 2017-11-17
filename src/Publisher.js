@@ -5,15 +5,44 @@ import Paper from './model/Paper'
 class Publisher extends Component {
     constructor(props){
       super(props);
+      this.state = {
+        inputValue: ''
+      }
     }
 
-    addNews = (e) => {
-      let value = e.target.value
-      if (e.key === 'Enter') {
+    clearInput = () => {
+      this.setState({
+        inputValue: ''
+      })
+    }
+
+    handleClick = (e) => {
+      let value = this.state.inputValue,
+          news = new News(`${value}`)
+
+      this.props.paper.getFromInput(news.title)
+      this.props.update(news);
+      this.clearInput()
+    }
+
+    handleEnter = (e) => {
+      let value = e.target.value,
+          isEnter = e.key === 'Enter'
+
+      if (isEnter) {
         let news = new News(`${value}`)
+
         this.props.paper.getFromInput(news.title)
-        // this.props.update(news);
+        this.props.update(news);
+        this.clearInput()
       }
+    }
+
+    handleChange = (e) => {
+      let value = e.target.value
+      this.setState({
+        inputValue: value
+      })
     }
 
     render() {
@@ -24,8 +53,8 @@ class Publisher extends Component {
             <span className="publisher-name">{paperName}</span>
             <div className="publisher-news-area" cols="20" rows="10">1. New item</div>
             <div className="publisher-input-area">
-              <input className="publisher-input" onKeyPress={this.addNews} type="text"/>
-              <button className="publisher-btn" onKeyPress={this.addNews}>Send</button>
+              <input className="publisher-input" value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleEnter} type="text"/>
+            <button className="publisher-btn" onClick={this.handleClick}>Send</button>
             </div>
 
           </div>
