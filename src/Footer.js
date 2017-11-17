@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Header extends Component {
+class Footer extends Component {
   render() {
     return (
-        <header className="header">
+        <footer className="footer">
           <p className="portal-name">{this.props.portalName}</p>
-        </header>
+        </footer>
     );
   }
 }
 
-export default Header;
+export default Footer;

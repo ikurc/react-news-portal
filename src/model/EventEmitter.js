@@ -19,7 +19,8 @@ class EventEmitter {
 		if (readers) {
 			readers.forEach(reader => reader(data))
 		} else {
-			throw new Error("Any reader isnt exists!")
+			return
+			// throw new Error("Any reader isnt exists!")
 		}
 	}
 }

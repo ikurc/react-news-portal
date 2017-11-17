@@ -18,13 +18,15 @@ class Subscribers extends Component {
 
     render() {
       const users = this.props.users
+      const papers = this.props.papers
+      const portal = this.props.portal
 
       return (
         <div className="subscribers">
           <input onKeyPress={this.addUser} className="input-user" type="text"/>
-          <button className="add-subscriber-btn">Add user</button>
+          <button className="waves-effect waves-light btn">Add user</button>
           <div className="subscribers-content">
-            {users.map((user,i) => <Subscriber key={i} user={user}/>)}
+            {users.map((user,i) => <Subscriber update={this.props.updateSub} portal={portal} key={i} user={user} papers={papers}/>)}
           </div>
 
         </div>

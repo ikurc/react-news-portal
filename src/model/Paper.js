@@ -4,6 +4,7 @@ class Paper {
 	// hardcode
 	constructor(name) {
 		this.name = name;
+		this.portals = [];
 	}
 
 	subscribePortal = (fn) => {

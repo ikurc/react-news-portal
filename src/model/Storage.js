@@ -3,12 +3,8 @@ import Human from './Human'
 import Robot from './Robot'
 
 class Storage {
-    constructor() {
-        this.papers = [
-            new Paper("The Guardian"),
-            new Paper("The Independent"),
-            new Paper("The New York Times")
-        ]
+    constructor(papers) {
+        this.papers = papers
         this.users = []
         this.news = []
     }

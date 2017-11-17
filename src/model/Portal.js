@@ -13,7 +13,7 @@ class Portal extends EventEmitter {
 	}
 
 	trigger = (data) => {
-		this.views.forEach( view => view(data))
+		this.views.forEach(view => view(data))
 	}
 }
 
