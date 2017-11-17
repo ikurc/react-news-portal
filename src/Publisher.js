@@ -14,9 +14,9 @@ class Publisher extends Component {
       let value = e.target.value
       if (e.key === 'Enter') {
         let news = new News(`${value}`)
-        this.setState({
-          news: [...this.state.news, value]
-        })
+        // this.setState({
+        //   news: [...this.state.news, value]
+        // })
         this.props.update(news);
       }
     }

@@ -6,6 +6,12 @@ class Control {
   handleChange = () => {
     console.log(this.model)
   }
+
+  update(news) {
+    this.model.storage.addNews(news);
+
+    this.model.trigger();
+  }
 }
 
 export default Control
