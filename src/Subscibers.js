@@ -9,7 +9,8 @@ class Subscribers extends Component {
       super(props);
       this.state = {
         inputValue: '',
-        selectValue: '',
+        // default human value
+        selectValue: 'Human',
         types: ['Human', 'Robot']
       }
     }
