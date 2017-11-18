@@ -3,7 +3,6 @@ html, body, .root {
 }
 
 body {
-  background-color: rgba(0, 0, 0, 0.1);
   font-family: "Roboto";
   margin: 0;
   padding: 0;
@@ -20,7 +19,7 @@ input {
 }
 
 input:focus {
-  transition: all .9s;
+  transition: all .3s;
   border-bottom: 2px solid #61dafb;
 }
 
@@ -76,18 +75,25 @@ button {
 }
 
 .publishers {
+  background-color: rgba(0, 0, 0, 0.1);;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .subscribers {
-  background-color: #9BA6A5;
+  padding: 20px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F2EBBF;
+  height: 230px;
+  flex-shrink: 2;
 }
 
 .publisher {
-  width: 30%;
+  margin: 0 20px;
+  border-radius: 5px;
+  width: 20%;
   background-color: #fff;
   text-align: center;
   padding: 10px 15px;
@@ -119,13 +125,14 @@ button {
   width: 84%;
 }
 
-.publisher-btn {
+.publisher-btn,
+.add-user-btn {
   color: #282c34;
   font-size: 12px;
   font-weight: 800;
   background-color: #27323A;
   color: white;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
   display: inline-block;
@@ -139,4 +146,89 @@ button {
   border-radius: 2px;
   margin-left: 5px;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.subscribers-content {
+  margin: 20px 0;
+  display: flex;
+}
+
+.input-wrapper {
+  height: 25px;
+}
+
+.add-user-btn {
+  height: 100%;
+}
+
+.input-user {
+  padding: 5px 10px;
+}
+
+.subscriber {
+  padding: 8px 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  margin: 0 10px;
+  border-radius: 2px;
+  min-width: 200px;
+  background-color: #fff;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.subscriber-name {
+  color: #282c34;
+  margin-bottom: 0;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.subscriber-close {
+  cursor: pointer;
+  position: absolute;
+  top: 6px;
+  right: 4px;
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url(user-close.svg);
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.subscriptions {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  -ms-align-items: flex-start;
+  align-items: flex-start;
+}
+
+.subscriber-btn:visited {
+  background: #64B543;
+  color: #fff;
+}
+
+.subscriber-btn:hover {
+  background: #64B543;
+  transition: all .2s;
+	color: #fff;
+	transform: scale(1.1);
+}
+
+.subscriber-btn {
+  border-radius: 3px;
+  width: 90%;
+  margin: 0 auto;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 16px;
 }

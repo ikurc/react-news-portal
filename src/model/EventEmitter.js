@@ -11,9 +11,24 @@ class EventEmitter {
 	}
 
 	unSubscribe = (eventType, fnToRemove) => {
-		this.events[eventType].filter(fn => fn != fnToRemove);
+		let readers = this.events[eventType]
+		this.events[eventType] = readers.filter(fn => fn != fnToRemove);
+
+		// Delete if last
+		if (this.events[eventType] != []) {
+			this.events = {}
+		}
 	}
 
+	// Check if subscriber
+	isSubscriber(eventType, fn) {
+		let readers = this.events[eventType]
+		if (readers) {
+			return readers.includes(fn)
+		}
+	}
+
+	// Notify all readers
 	notify = (eventType, data) => {
 		let readers = this.events[eventType];
 		if (readers) {

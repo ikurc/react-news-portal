@@ -6,14 +6,43 @@ import Human from "./model/Human"
 class Subscribers extends Component {
     constructor(props){
       super(props);
+      this.state = {
+        inputValue: ''
+      }
     }
 
-    addUser = (e) => {
-      let value = e.target.value
-      if (e.key === 'Enter') {
+    clearInput = () => {
+      this.setState({
+        inputValue: ''
+      })
+    }
+
+    handleClick = (e) => {
+      let value = this.state.inputValue
+
+      if (value) {
         let human = new Human(`${value}`)
-        this.props.update(human);
+        this.props.addUser(human);
       }
+      this.clearInput()
+    }
+
+    handleEnter = (e) => {
+      let value = e.target.value,
+          isEnter = e.key === 'Enter'
+
+      if (isEnter && value) {
+        let human = new Human(`${value}`)
+        this.props.addUser(human);
+        this.clearInput()
+      }
+    }
+
+    handleChange = (e) => {
+      let value = e.target.value
+      this.setState({
+        inputValue: value
+      })
     }
 
     render() {
@@ -23,10 +52,13 @@ class Subscribers extends Component {
 
       return (
         <div className="subscribers">
-          <input onKeyPress={this.addUser} className="input-user" type="text"/>
-          <button className="waves-effect waves-light btn">Add user</button>
+          <div className="input-wrapper">
+            <input className="input-user" value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleEnter} type="text"/>
+          <button className="add-user-btn" onClick={this.handleClick}>Add user</button>
+          </div>
+
           <div className="subscribers-content">
-            {users.map((user,i) => <Subscriber update={this.props.updateSub} portal={portal} key={i} user={user} papers={papers}/>)}
+            {users.map((user,i) => <Subscriber key={i} portal={portal} papers={papers} user={user} deleteUser={this.props.deleteUser} subscribe={this.props.subscribe} unsubscribe={this.props.unsubscribe}/>)}
           </div>
 
         </div>

@@ -7,7 +7,7 @@ import Control from './control/Control'
 import Storage from './model/Storage'
 import Paper from './model/Paper'
 
-const papers = [new Paper("The Guardian"), new Paper("The Independent"), new Paper("The New York Times")]
+const papers = [new Paper("The Guardian"), new Paper("The Independent"), new Paper("New York Times")]
 
 // Data storage
 const storage = new Storage(papers)

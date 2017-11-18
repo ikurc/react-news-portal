@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import Footer from './Footer';
 import Publishers from './Publishers';
 import Subscibers from './Subscibers';
 import './App.css';
@@ -10,16 +9,24 @@ class App extends Component {
       super(props);
     }
 
-    updateUsers = (user) => {
-      this.props.controller.updateUsers(user);
+    addUser = (user) => {
+      this.props.controller.addUser(user);
     }
 
-    updateNews = (news) => {
-      this.props.controller.updateNews(news);
+    deleteUser = (user) => {
+      this.props.controller.deleteUser(user);
+    }
+
+    addNews = (news) => {
+      this.props.controller.addNews(news);
     }
 
     subscribe = (paper, user) => {
       this.props.controller.subscribe(paper,user)
+    }
+
+    unsubscribe = (paper, user) => {
+      this.props.controller.unsubscribe(paper, user)
     }
 
     subscribeOnPaper = (papers) => {
@@ -28,36 +35,39 @@ class App extends Component {
 
 
 
-    updateState1 = () => {
+    updateState = () => {
       this.setState({});
     }
 
     componentWillMount() {
       const papers = this.props.portal.storage.papers
+
       this.subscribeOnPaper(papers)
-      this.props.portal.on(this.updateState1);
+      this.props.portal.on(this.updateState);
     }
 
     render() {
-      const storage = this.props.portal.storage
-      const name = this.props.portal.name
+      const portal = this.props.portal,
+            storage = portal.storage,
+            name = this.props.portal.name,
+            papers = storage.papers,
+            users = storage.users,
+            news = storage.news
 
-      const portal = this.props.portal;
-      const papers = storage.papers;
-      const users = storage.users;
-      const news = storage.news;
-
-
-
-      console.log(storage)
       return (
         <div className="App">
           <Header portalName={name}/>
           <div className="content">
-            <Publishers papers={papers} update={this.updateNews}/>
-            <Subscibers papers={papers} portal={portal} users={users} update={this.updateUsers} updateSub={this.subscribe}/>
+            <Publishers papers={papers} update={this.addNews}/>
+            <Subscibers
+               papers={papers}
+               portal={portal}
+               users={users}
+               addUser={this.addUser}
+               deleteUser={this.deleteUser}
+               subscribe={this.subscribe}
+               unsubscribe={this.unsubscribe}/>
           </div>
-          <Footer portalName={name}/>
         </div>
       );
     }

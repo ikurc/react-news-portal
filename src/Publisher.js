@@ -17,11 +17,14 @@ class Publisher extends Component {
     }
 
     handleClick = (e) => {
-      let value = this.state.inputValue,
-          news = new News(`${value}`)
+      let value = this.state.inputValue
 
-      this.props.paper.getFromInput(news.title)
-      this.props.update(news);
+      if (value) {
+        let news = new News(`${value}`)
+
+        this.props.paper.getFromInput(news.title)
+        this.props.update(news);
+      }
       this.clearInput()
     }
 
@@ -29,7 +32,7 @@ class Publisher extends Component {
       let value = e.target.value,
           isEnter = e.key === 'Enter'
 
-      if (isEnter) {
+      if (isEnter && value) {
         let news = new News(`${value}`)
 
         this.props.paper.getFromInput(news.title)
@@ -53,7 +56,7 @@ class Publisher extends Component {
             <span className="publisher-name">{paperName}</span>
             <div className="publisher-news-area" cols="20" rows="10">1. New item</div>
             <div className="publisher-input-area">
-              <input className="publisher-input" value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleEnter} type="text"/>
+              <input className="publisher-input" placeholder="type news title..." value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleEnter} type="text"/>
             <button className="publisher-btn" onClick={this.handleClick}>Send</button>
             </div>
 
