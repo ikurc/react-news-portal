@@ -17,30 +17,35 @@ class Publisher extends Component {
     }
 
     handleServerRequest = () => {
-      this.props.paper.getFromServer()
+      console.log("handleServerRequest (Publisher)")
+      let paper = this.props.paper
+      paper.getFromServer()
+      console.log(this.props.storage.news, " News storage")
     }
 
     handleClick = (e) => {
       let value = this.state.inputValue
+      let paper = this.props.paper
 
       if (value) {
-        let news = new News(`${value}`)
+        let news = new News(`${value}`, paper)
 
-        this.props.paper.getFromInput(news.title)
-        this.props.update(news);
+        paper.getFromInput(news)
+        // this.props.addNews(news);
+        this.clearInput()
       }
-      this.clearInput()
     }
 
     handleEnter = (e) => {
       let value = e.target.value,
+          paper = this.props.paper,
           isEnter = e.key === 'Enter'
 
       if (isEnter && value) {
-        let news = new News(`${value}`)
+        let news = new News(`${value}`, paper)
 
-        this.props.paper.getFromInput(news.title)
-        this.props.update(news);
+        paper.getFromInput(news)
+        // this.props.addNews(news);
         this.clearInput()
       }
     }
@@ -54,16 +59,22 @@ class Publisher extends Component {
 
     render() {
       const paperName = this.props.paper.name
+      const storage = this.props.storage
+
+      const mynews = storage.getPaperNews(paperName).reverse()
       // const news = this.state.news.map((newsItem, i) => <p key={i}>{newsItem}</p>)
       return (
           <div className="publisher">
             <span className="publisher-name">{paperName}</span>
-            <div className="publisher-news-area" cols="20" rows="10">1. New item</div>
+            <div className="publisher-news-area" cols="20" rows="10">
+              {mynews.map((newsItem, i) => <p className="news-title" key={i}>{mynews.length - i + ". " + newsItem.title}</p>)}
+            </div>
+
             <div className="publisher-input-area">
               <input className="publisher-input" placeholder="type news title..." value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleEnter} type="text"/>
             <button className="publisher-btn publisher-send-btn" onClick={this.handleClick}>Send</button>
             </div>
-              <button className="publisher-btn publisher-server-btn" onClick={this.handleServerRequest}>Get from server</button>
+            <button className="publisher-btn publisher-server-btn" onClick={this.handleServerRequest}>Get from server</button>
           </div>
       );
     }

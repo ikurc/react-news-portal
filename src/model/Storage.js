@@ -42,6 +42,10 @@ class Storage {
         return this.news
     }
 
+    getPaperNews = (paper) => {
+      return this.news.filter(news => news.paper == paper)
+    }
+
     deleteNews(ID){
         let newsList = this.news;
         this.news = newsList.filter(news => news.ID !== ID);

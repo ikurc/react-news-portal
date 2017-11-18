@@ -1,7 +1,7 @@
 class News {
-    constructor(title) {
+    constructor(title, paper) {
         this.title = title;
-        // this.body = body;
+        this.paper = paper.name
         this.ID = News.generateID()
     }
 

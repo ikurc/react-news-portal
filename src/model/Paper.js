@@ -1,4 +1,5 @@
 import serverReq from './ServerRequest'
+import News from './News'
 
 class Paper {
 	// hardcode
@@ -16,21 +17,25 @@ class Paper {
 	}
 
 	notifyPortals = (data) => {
+		console.log("notifyPortals (Paper)")
 		this.portals.forEach(portal => portal(this.name, data))
 	}
 
 	getFromServer = () => {
-
+		console.log("getFromServer (Paper)")
 		let link = 'https://jsonplaceholder.typicode.com/posts'
-		let newsStorage = fetch(link)
 
 		// Get news
-		newsStorage.then(response => response.json())
+		fetch(link).then(response => response.json())
 		.then(news => {
 			let random = Math.floor(news.length * Math.random())
 			return news[random] //get random article
 		})
-		.then(newsItem => this.notifyPortals(newsItem.title))
+		.then(newsItem => {
+			let news = new News(newsItem.title, this)
+			console.log("news item created")
+			this.notifyPortals(news)
+		})
 		.catch(error => console.log(error))
 	}
 

@@ -37,7 +37,9 @@ class App extends Component {
       this.props.controller.getFromServer()
     }
 
-
+    // getFromInput = (data) => {
+    //   this.props.controller.getFromInput(data)
+    // }
 
     updateState = () => {
       this.setState({});
@@ -53,7 +55,7 @@ class App extends Component {
     render() {
       const portal = this.props.portal,
             storage = portal.storage,
-            name = this.props.portal.name,
+            name = portal.name,
             papers = storage.papers,
             users = storage.users,
             news = storage.news
@@ -62,7 +64,7 @@ class App extends Component {
         <div className="App">
           <Header portalName={name}/>
           <div className="content">
-            <Publishers papers={papers} update={this.addNews} getFromServer={this.getFromServer}/>
+            <Publishers storage={storage} papers={papers} addNews={this.addNews} updateState={this.updateState}/>
             <Subscibers
                papers={papers}
                portal={portal}

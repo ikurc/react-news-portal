@@ -30,12 +30,13 @@ class EventEmitter {
 
 	// Notify all readers
 	notify = (eventType, data) => {
+		console.log("nofity (EventEmitter)")
+		this.storage.addNews(data)
 		let readers = this.events[eventType];
 		if (readers) {
 			readers.forEach(reader => reader(data))
 		} else {
 			return
-			// throw new Error("Any reader isnt exists!")
 		}
 	}
 }

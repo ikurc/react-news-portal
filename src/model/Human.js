@@ -6,7 +6,7 @@ class Human extends User {
     }
 
 	  handleUpdate = (data) => {
-        console.log(`${this.name} has read: ${data}`)
+        console.log(`${this.name} has read: ${data.title}`)
     }
 }
 

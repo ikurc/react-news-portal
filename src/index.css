@@ -33,18 +33,11 @@ button {
   height: 100%;
 }
 
-.content {
-  flex-grow: 1;
-}
-
-.footer,
 .header {
-  display: flex;
+  padding: 10px;
   align-items: center;
   background-color: #27323A;
-  z-index: 1;
-  width: 100%;
-  height: 50px;
+  height: 100px;
 }
 
 .portal-name {
@@ -70,7 +63,7 @@ button {
 
 .publishers,
 .subscribers {
-  padding: 50px;
+  padding: 20px;
   /*height: 50%;*/
 }
 
@@ -108,10 +101,38 @@ button {
   font-weight: 700;
 }
 
+.publisher-input-area {
+  margin-top: 20px;
+}
+
 .publisher-news-area {
+  padding-top: 5px;
+  overflow-y: scroll;
   text-align: left;
   margin: 6px 0;
-  height: 100px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /*box-shadow: inset 0px -1px 1px 1px rgba(0, 0, 0, 0.2);*/
+  /*box-shadow: inset 0px 1px 1px 1px rgba(0, 0, 0, 0.2);*/
+}
+
+.news-title {
+  display: inline-block;
+  margin: 4px 10px;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+
+  /*width: 80%;*/
+}
+
+.news-title::first-letter {
+  font-weight: bold;
+  color: #27323A;
 }
 
 .publisher-input-area {

@@ -18,8 +18,7 @@ class Subscribers extends Component {
     clearInput = () => {
       this.setState({
         inputValue: '',
-        selectValue: ''
-      })
+        })
     }
 
     handleClick = () => {
@@ -78,7 +77,6 @@ class Subscribers extends Component {
     }
 
     render() {
-      console.log(this.state)
       const users = this.props.users
       const papers = this.props.papers
       const portal = this.props.portal

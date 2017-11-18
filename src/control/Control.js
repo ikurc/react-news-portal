@@ -37,8 +37,12 @@ class Control {
   }
 
   getFromServer() {
-    console.log("getFromServer() from controller")
+    this.model.trigger();
   }
+
+  // getFromInput(data) {
+  //
+  // }
 }
 
 export default Control
