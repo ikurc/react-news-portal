@@ -6,7 +6,7 @@ class Publishers extends Component {
     const papers = this.props.papers
     return (
         <div className="publishers">
-          {papers.map((paper,i) => <Publisher key={i} paper={paper} update={this.props.update}/>)}
+          {papers.map((paper,i) => <Publisher key={i} paper={paper} update={this.props.update} handleServer={this.props.getFromServer}/>)}
         </div>
     );
   }

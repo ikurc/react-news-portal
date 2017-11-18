@@ -33,6 +33,10 @@ class App extends Component {
       this.props.controller.subscribeOnPaper(papers)
     }
 
+    getFromServer = () => {
+      this.props.controller.getFromServer()
+    }
+
 
 
     updateState = () => {
@@ -58,7 +62,7 @@ class App extends Component {
         <div className="App">
           <Header portalName={name}/>
           <div className="content">
-            <Publishers papers={papers} update={this.addNews}/>
+            <Publishers papers={papers} update={this.addNews} getFromServer={this.getFromServer}/>
             <Subscibers
                papers={papers}
                portal={portal}

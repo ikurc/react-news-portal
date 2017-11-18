@@ -35,6 +35,10 @@ class Control {
   subscribeOnPaper(papers) {
     papers.forEach(paper => paper.subscribePortal(this.model.notify))
   }
+
+  getFromServer() {
+    console.log("getFromServer() from controller")
+  }
 }
 
 export default Control

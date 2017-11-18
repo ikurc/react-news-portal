@@ -17,15 +17,13 @@
 //         fetch(requestURL)
 //             .then(ServerRequest.status)
 //             .then(ServerRequest.json)
-//             .then((data) => {
-//                 data.forEach(function(news) {
+//             .then(data => {
+//                 data.forEach(news => {
 //                     newsStorage.addNews(new News(news.title, news.body));
 //                     paper.notifyPortals(news.title)
 //                 });
 //             })
-// 			.catch((error) => {
-//                 console.log('Fetch Error :', error);
-//             });
+// 			.catch(error => console.log('Fetch Error :', error));
 //     }
 // }
 //

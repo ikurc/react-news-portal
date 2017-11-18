@@ -16,6 +16,10 @@ class Publisher extends Component {
       })
     }
 
+    handleServerRequest = () => {
+      this.props.paper.getFromServer()
+    }
+
     handleClick = (e) => {
       let value = this.state.inputValue
 
@@ -59,7 +63,7 @@ class Publisher extends Component {
               <input className="publisher-input" placeholder="type news title..." value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleEnter} type="text"/>
             <button className="publisher-btn publisher-send-btn" onClick={this.handleClick}>Send</button>
             </div>
-              <button className="publisher-btn publisher-server-btn" onClick={this.handleClick}>Get from server</button>
+              <button className="publisher-btn publisher-server-btn" onClick={this.handleServerRequest}>Get from server</button>
           </div>
       );
     }
