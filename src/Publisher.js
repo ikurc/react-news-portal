@@ -57,9 +57,9 @@ class Publisher extends Component {
             <div className="publisher-news-area" cols="20" rows="10">1. New item</div>
             <div className="publisher-input-area">
               <input className="publisher-input" placeholder="type news title..." value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleEnter} type="text"/>
-            <button className="publisher-btn" onClick={this.handleClick}>Send</button>
+            <button className="publisher-btn publisher-send-btn" onClick={this.handleClick}>Send</button>
             </div>
-
+              <button className="publisher-btn publisher-server-btn" onClick={this.handleClick}>Get from server</button>
           </div>
       );
     }
