@@ -28,7 +28,9 @@ class Publisher extends Component {
       if (value) {
         let news = new News(`${value}`, paper)
 
-        this.props.getFromInput(news);
+        paper.getFromInput(news)
+        this.props.getFromInput(news)
+        
         this.clearInput()
       }
     }
@@ -41,7 +43,9 @@ class Publisher extends Component {
       if (isEnter && value) {
         let news = new News(`${value}`, paper)
 
+        paper.getFromInput(news)
         this.props.getFromInput(news);
+
         this.clearInput()
       }
     }

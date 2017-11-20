@@ -37,12 +37,17 @@ class Subscriber extends Component {
       const userName = this.props.user.name
       const papers = this.props.papers
 
+      // const usernews = storage.getPaperNews(paperName).reverse()
+
       return (
         <div className="subscriber">
           <span className='subscriber-close' onClick={this.deleteUser}></span>
-        <span className="subscriber-name">{userName.toUpperCase()}</span>
+          <span className="subscriber-name">{userName.toUpperCase()}</span>
           <div className="subscriptions">
             {papers.map((paper, i) => <button onClick={ () => this.handleSubscribe(paper)} className="subscriber-btn" key={i}>{paper.name}</button>)}
+          </div>
+          <div className="news">
+
           </div>
         </div>
       );

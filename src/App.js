@@ -58,7 +58,6 @@ class App extends Component {
             papers = storage.papers,
             users = storage.users,
             news = storage.news
-      console.log(news)
 
       return (
         <div className="App">
