@@ -1,31 +1,25 @@
-import React, { Component } from 'react';
-import Header from './Header';
-import Publishers from './Publishers';
-import Subscibers from './Subscibers';
-import './App.css';
+import React, { Component } from 'react'
+import Header from './Header'
+import Publishers from './Publishers'
+import Subscibers from './Subscibers'
+import './App.css'
 
 class App extends Component {
-    constructor(props){
-      super(props);
-    }
-
     addUser = (user) => {
-      this.props.controller.addUser(user);
+      this.props.controller.addUser(user)
     }
 
     deleteUser = (user) => {
-      this.props.controller.deleteUser(user);
+      this.props.controller.deleteUser(user)
     }
 
-
     getFromInput = (news) => {
-      this.props.controller.addNews(news);
+      this.props.controller.addNews(news)
     }
 
     getFromServer = (news) => {
-      this.props.controller.addNews(news);
+      this.props.controller.addNews(news)
     }
-
 
     subscribe = (paper, user) => {
       this.props.controller.subscribe(paper,user)
@@ -39,16 +33,15 @@ class App extends Component {
       this.props.controller.subscribeOnPaper(papers)
     }
 
-
     updateState = () => {
-      this.setState({});
+      this.setState({})
     }
 
     componentWillMount() {
       const papers = this.props.portal.storage.papers
 
       this.subscribeOnPaper(papers)
-      this.props.portal.on(this.updateState);
+      this.props.portal.on(this.updateState)
     }
 
     render() {
@@ -56,8 +49,7 @@ class App extends Component {
             storage = portal.storage,
             name = portal.name,
             papers = storage.papers,
-            users = storage.users,
-            news = storage.news
+            users = storage.users
 
       return (
         <div className="App">
@@ -74,8 +66,8 @@ class App extends Component {
                unsubscribe={this.unsubscribe}/>
           </div>
         </div>
-      );
+      )
     }
 }
 
-export default App;
+export default App

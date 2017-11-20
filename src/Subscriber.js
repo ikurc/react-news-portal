@@ -1,57 +1,75 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Subscriber extends Component {
     constructor(props){
-      super(props);
+      super(props)
     }
 
+    // Set state for each paper (isSubscribed on current paper) "false" by default
+    componentWillMount() {
+      const portal = this.props.portal,
+            papers = this.props.papers,
+            user = this.props.user.handleUpdate
+
+      papers.forEach(paper => {
+        let isSubscriber = portal.isSubscriber(paper.name, user)
+        this.setState({[paper.name]: isSubscriber})
+      })
+    }
+
+    // Toggle status of paper (true / false)
+    toggleState = (key) => {
+      this.setState({
+        [key]: !this.state[key]
+      })
+    }
+
+    // Response on click and sub / unsub user
     handleSubscribe = (paper) => {
-      const portal = this.props.portal
-      const user = this.props.user.handleUpdate
+      const portal = this.props.portal,
+            user = this.props.user.handleUpdate,
+            isSubscriber = portal.isSubscriber(paper.name, user)
 
-      const isSubscriber = portal.isSubscriber(paper.name, user)
-
-      if (isSubscriber) {
-        this.unSubscribeFromPaper(paper, user)
-      } else {
-        this.subscribeOnPaper(paper, user)
-      }
+      isSubscriber ? this.unSubscribeFromPaper(paper, user) :
+                     this.subscribeOnPaper(paper, user)
     }
 
+    // Subscribe
     subscribeOnPaper = (paper) => {
       this.props.subscribe(paper.name, this.props.user.handleUpdate)
-      console.log("subscribed")
+      this.toggleState(paper.name)
     }
 
+    // Unsubscribe
     unSubscribeFromPaper = (paper) => {
       this.props.unsubscribe(paper.name, this.props.user.handleUpdate)
-      console.log("unsubscribed")
+      this.toggleState(paper.name)
     }
 
+    // Delete
     deleteUser = () => {
       let user = this.props.user
       this.props.deleteUser(user.ID)
     }
 
     render() {
-      const userName = this.props.user.name
-      const papers = this.props.papers
+      const papers = this.props.papers,
+            userName = this.props.user.name.toUpperCase()
 
-      // const usernews = storage.getPaperNews(paperName).reverse()
+      const subscriptions = papers.map((paper, i) => {
+        return <button
+                className={this.state[paper.name] ? 'subscriber-btn active' : 'subscriber-btn' }
+                key={i}
+                onClick={() => this.handleSubscribe(paper)}>{paper.name}</button>})
 
       return (
         <div className="subscriber">
           <span className='subscriber-close' onClick={this.deleteUser}></span>
-          <span className="subscriber-name">{userName.toUpperCase()}</span>
-          <div className="subscriptions">
-            {papers.map((paper, i) => <button onClick={ () => this.handleSubscribe(paper)} className="subscriber-btn" key={i}>{paper.name}</button>)}
-          </div>
-          <div className="news">
-
-          </div>
+          <span className="subscriber-name">{userName}</span>
+          <div className="subscriptions">{subscriptions}</div>
         </div>
-      );
+      )
     }
 }
 
-export default Subscriber;
+export default Subscriber

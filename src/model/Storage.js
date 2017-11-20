@@ -1,7 +1,3 @@
-import Paper from './Paper'
-import Human from './Human'
-import Robot from './Robot'
-
 class Storage {
     constructor(papers) {
         this.papers = papers
@@ -43,7 +39,7 @@ class Storage {
     }
 
     getPaperNews = (paper) => {
-      return this.news.filter(news => news.paper == paper)
+      return this.news.filter(news => news.paper === paper)
     }
 
     deleteNews(ID){

@@ -1,15 +1,14 @@
-import serverReq from './ServerRequest'
 import News from './News'
 
 class Paper {
 	// hardcode
 	constructor(name) {
-		this.name = name;
-		this.portals = [];
+		this.name = name
+		this.portals = []
 	}
 
 	subscribePortal = (fn) => {
-		this.portals.push(fn);
+		this.portals.push(fn)
 	}
 
 	unSubscribePortal = (fn) => {
@@ -17,7 +16,10 @@ class Paper {
 	}
 
 	notifyPortals = (data) => {
-		this.portals.forEach(portal => portal(this.name, data))
+		let portals = this.portals
+		if (portals) {
+			portals.forEach(portal => portal(this.name, data))
+		}
 	}
 
 	getFromServer = () => {
@@ -37,14 +39,9 @@ class Paper {
 		.catch(error => console.log(error))
 	}
 
-	// Bogdana realizaciya
-	// getFromServer = () => {
-	// 	let data = serverReq.fetchNews('./news.json', this);
-	// 	this.notifyPortals(data)
-	// }
-
 	getFromInput = (data) => {
 		this.notifyPortals(data)
+		// return data (maybe)
 	}
 }
 

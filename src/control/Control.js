@@ -8,28 +8,28 @@ class Control {
   }
 
   addNews(news) {
-    this.model.storage.addNews(news);
-    this.model.trigger();
+    this.model.storage.addNews(news)
+    this.model.trigger()
   }
 
   addUser(user) {
-    this.model.storage.addUser(user);
-    this.model.trigger();
+    this.model.storage.addUser(user)
+    this.model.trigger()
   }
 
   deleteUser(user) {
-    this.model.storage.deleteUser(user);
-    this.model.trigger();
+    this.model.storage.deleteUser(user)
+    this.model.trigger()
   }
 
   subscribe(paper, user) {
     this.model.subscribe(paper, user)
-    this.model.trigger();
+    this.model.trigger()
   }
 
   unsubscribe(paper, user) {
     this.model.unSubscribe(paper, user)
-    this.model.trigger();
+    this.model.trigger()
   }
 
   subscribeOnPaper(papers) {

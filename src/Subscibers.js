@@ -16,9 +16,7 @@ class Subscribers extends Component {
     }
 
     clearInput = () => {
-      this.setState({
-        inputValue: '',
-        })
+      this.setState({inputValue: ''})
     }
 
     handleClick = () => {
@@ -29,13 +27,15 @@ class Subscribers extends Component {
         switch (selectValue) {
           case "Human":
             let human = new Human(`${inputValue}`)
-            this.props.addUser(human);
+            this.props.addUser(human)
             break;
 
           case "Robot":
             let robot = new Robot(`${inputValue}`)
-            this.props.addUser(robot);
-            break;
+            this.props.addUser(robot)
+            break
+          default:
+            break
         }
       }
       this.clearInput()
@@ -50,13 +50,15 @@ class Subscribers extends Component {
         switch (selectValue) {
           case "Human":
             let human = new Human(`${inputValue}`)
-            this.props.addUser(human);
+            this.props.addUser(human)
             break;
 
           case "Robot":
             let robot = new Robot(`${inputValue}`)
-            this.props.addUser(robot);
-            break;
+            this.props.addUser(robot)
+            break
+          default:
+            break
         }
         this.clearInput()
       }

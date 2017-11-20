@@ -4,7 +4,9 @@ class EventEmitter {
 	}
 
 	subscribe = (eventType, fn) => {
-		if (!this.events[eventType]) {
+		let readers = this.events[eventType]
+
+		if (!readers) {
 			this.events[eventType] = []
 		}
 		this.events[eventType].push(fn)
@@ -12,30 +14,20 @@ class EventEmitter {
 
 	unSubscribe = (eventType, fnToRemove) => {
 		let readers = this.events[eventType]
-		this.events[eventType] = readers.filter(fn => fn != fnToRemove);
-
-		// Delete if last
-		if (this.events[eventType] != []) {
-			this.events = {}
-		}
+		this.events[eventType] = readers.filter(fn => fn !== fnToRemove)
+		// delete if last feature next --->
 	}
 
 	// Check if subscriber
-	isSubscriber(eventType, fn) {
+	isSubscriber = (eventType, fn) => {
 		let readers = this.events[eventType]
-		if (readers) {
-			return readers.includes(fn)
-		}
+		return readers ? readers.includes(fn) : false
 	}
 
 	// Notify all readers
 	notify = (eventType, data) => {
-		let readers = this.events[eventType];
-		if (readers) {
-			readers.forEach(reader => reader(data))
-		} else {
-			return
-		}
+		let readers = this.events[eventType]
+		readers ? readers.forEach(reader => reader(data)) : false
 	}
 }
 

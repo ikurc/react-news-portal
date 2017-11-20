@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import News from './model/News'
-import Paper from './model/Paper'
 
 class Publisher extends Component {
     constructor(props){
@@ -30,7 +29,7 @@ class Publisher extends Component {
 
         paper.getFromInput(news)
         this.props.getFromInput(news)
-        
+
         this.clearInput()
       }
     }
