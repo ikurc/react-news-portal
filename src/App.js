@@ -22,8 +22,8 @@ class App extends Component {
       this.props.controller.addNews(news);
     }
 
-    getFromServer = () => {
-      this.props.controller.getFromServer();
+    getFromServer = (news) => {
+      this.props.controller.addNews(news);
     }
 
 
@@ -64,7 +64,7 @@ class App extends Component {
         <div className="App">
           <Header portalName={name}/>
           <div className="content">
-            <Publishers storage={storage} papers={papers} getFromInput={this.getFromInput} getFromServer={this.updateState}/>
+            <Publishers storage={storage} papers={papers} getFromInput={this.getFromInput} getFromServer={this.getFromServer}/>
             <Subscibers
                papers={papers}
                portal={portal}

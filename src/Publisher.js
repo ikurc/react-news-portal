@@ -18,7 +18,7 @@ class Publisher extends Component {
 
     handleServerRequest = () => {
       let paper = this.props.paper
-      paper.getFromServer().then(this.props.getFromServer)
+      paper.getFromServer().then(data => this.props.getFromServer(data))
     }
 
     handleClick = (e) => {

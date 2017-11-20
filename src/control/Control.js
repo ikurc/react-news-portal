@@ -36,10 +36,10 @@ class Control {
     papers.forEach(paper => paper.subscribePortal(this.model.notify))
   }
 
-  getFromServer() {
-    this.model.trigger();
-  }
-  
+  // getFromServer() {
+  //   this.model.trigger();
+  // }
+
 }
 
 export default Control

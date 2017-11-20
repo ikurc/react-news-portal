@@ -30,7 +30,6 @@ class EventEmitter {
 
 	// Notify all readers
 	notify = (eventType, data) => {
-		this.storage.addNews(data)
 		let readers = this.events[eventType];
 		if (readers) {
 			readers.forEach(reader => reader(data))

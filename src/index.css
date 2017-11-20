@@ -42,10 +42,9 @@ ul {
 }
 
 .header {
-  padding: 10px;
+  padding: 24px 10px;
   align-items: center;
   background-color: #27323A;
-  height: 100px;
   display: flex;
 }
 

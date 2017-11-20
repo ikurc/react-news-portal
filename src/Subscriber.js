@@ -9,9 +9,9 @@ class Subscriber extends Component {
       const portal = this.props.portal
       const user = this.props.user.handleUpdate
 
-      const issub = portal.isSubscriber(paper.name, user)
+      const isSubscriber = portal.isSubscriber(paper.name, user)
 
-      if (issub) {
+      if (isSubscriber) {
         this.unSubscribeFromPaper(paper, user)
       } else {
         this.subscribeOnPaper(paper, user)
@@ -34,7 +34,6 @@ class Subscriber extends Component {
     }
 
     render() {
-      console.log(this.props.portal)
       const userName = this.props.user.name
       const papers = this.props.papers
 

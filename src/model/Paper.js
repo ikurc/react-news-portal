@@ -32,6 +32,7 @@ class Paper {
 		.then(newsItem => {
 			let news = new News(newsItem.title, this)
 			this.notifyPortals(news)
+			return news
 		})
 		.catch(error => console.log(error))
 	}
