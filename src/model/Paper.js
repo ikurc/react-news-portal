@@ -17,12 +17,10 @@ class Paper {
 	}
 
 	notifyPortals = (data) => {
-		console.log("notifyPortals (Paper)")
 		this.portals.forEach(portal => portal(this.name, data))
 	}
 
 	getFromServer = () => {
-		console.log("getFromServer (Paper)")
 		let link = 'https://jsonplaceholder.typicode.com/posts'
 
 		// Get news
@@ -33,7 +31,6 @@ class Paper {
 		})
 		.then(newsItem => {
 			let news = new News(newsItem.title, this)
-			console.log("news item created")
 			this.notifyPortals(news)
 		})
 		.catch(error => console.log(error))

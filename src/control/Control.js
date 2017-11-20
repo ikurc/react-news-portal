@@ -39,10 +39,7 @@ class Control {
   getFromServer() {
     this.model.trigger();
   }
-
-  // getFromInput(data) {
-  //
-  // }
+  
 }
 
 export default Control

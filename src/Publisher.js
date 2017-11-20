@@ -17,10 +17,8 @@ class Publisher extends Component {
     }
 
     handleServerRequest = () => {
-      console.log("handleServerRequest (Publisher)")
       let paper = this.props.paper
-      paper.getFromServer().then(this.props.updateState)
-      // console.log(this.props.storage.news, " News storage")
+      paper.getFromServer().then(this.props.getFromServer)
     }
 
     handleClick = (e) => {
@@ -30,8 +28,7 @@ class Publisher extends Component {
       if (value) {
         let news = new News(`${value}`, paper)
 
-        paper.getFromInput(news)
-        // this.props.addNews(news);
+        this.props.getFromInput(news);
         this.clearInput()
       }
     }
@@ -44,8 +41,7 @@ class Publisher extends Component {
       if (isEnter && value) {
         let news = new News(`${value}`, paper)
 
-        paper.getFromInput(news)
-        // this.props.addNews(news);
+        this.props.getFromInput(news);
         this.clearInput()
       }
     }
@@ -66,10 +62,7 @@ class Publisher extends Component {
           <div className="publisher">
             <span className="publisher-name">{paperName}</span>
             <div className="publisher-news-area" cols="20" rows="10">
-              {/* {mynews.map((newsItem, i) => <p className="news-title" key={i}>{mynews.length - i + ". " + newsItem.title}</p>)} */}
-              <ul>
-                {mynews.map((newsItem, i) => <li className="news-title" key={i}>{newsItem.title}</li>)}
-              </ul>
+              {mynews.map((newsItem, i) => <p className="news-title" key={i}>{mynews.length - i + ". " + newsItem.title}</p>)}
             </div>
 
             <div className="publisher-input-area">

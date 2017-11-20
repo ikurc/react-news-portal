@@ -17,9 +17,15 @@ class App extends Component {
       this.props.controller.deleteUser(user);
     }
 
-    addNews = (news) => {
+
+    getFromInput = (news) => {
       this.props.controller.addNews(news);
     }
+
+    getFromServer = () => {
+      this.props.controller.getFromServer();
+    }
+
 
     subscribe = (paper, user) => {
       this.props.controller.subscribe(paper,user)
@@ -33,13 +39,6 @@ class App extends Component {
       this.props.controller.subscribeOnPaper(papers)
     }
 
-    getFromServer = () => {
-      this.props.controller.getFromServer()
-    }
-
-    // getFromInput = (data) => {
-    //   this.props.controller.getFromInput(data)
-    // }
 
     updateState = () => {
       this.setState({});
@@ -59,12 +58,13 @@ class App extends Component {
             papers = storage.papers,
             users = storage.users,
             news = storage.news
+      console.log(news)
 
       return (
         <div className="App">
           <Header portalName={name}/>
           <div className="content">
-            <Publishers storage={storage} papers={papers} addNews={this.addNews} updateState={this.updateState}/>
+            <Publishers storage={storage} papers={papers} getFromInput={this.getFromInput} getFromServer={this.updateState}/>
             <Subscibers
                papers={papers}
                portal={portal}
