@@ -19,8 +19,8 @@ class Publisher extends Component {
     handleServerRequest = () => {
       console.log("handleServerRequest (Publisher)")
       let paper = this.props.paper
-      paper.getFromServer()
-      console.log(this.props.storage.news, " News storage")
+      paper.getFromServer().then(this.props.updateState)
+      // console.log(this.props.storage.news, " News storage")
     }
 
     handleClick = (e) => {
@@ -62,12 +62,14 @@ class Publisher extends Component {
       const storage = this.props.storage
 
       const mynews = storage.getPaperNews(paperName).reverse()
-      // const news = this.state.news.map((newsItem, i) => <p key={i}>{newsItem}</p>)
       return (
           <div className="publisher">
             <span className="publisher-name">{paperName}</span>
             <div className="publisher-news-area" cols="20" rows="10">
-              {mynews.map((newsItem, i) => <p className="news-title" key={i}>{mynews.length - i + ". " + newsItem.title}</p>)}
+              {/* {mynews.map((newsItem, i) => <p className="news-title" key={i}>{mynews.length - i + ". " + newsItem.title}</p>)} */}
+              <ul>
+                {mynews.map((newsItem, i) => <li className="news-title" key={i}>{newsItem.title}</li>)}
+              </ul>
             </div>
 
             <div className="publisher-input-area">

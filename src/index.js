@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
-import App from './App';
+
 import Portal from './model/Portal'
 import Control from './control/Control'
 import Storage from './model/Storage'
 import Paper from './model/Paper'
+
+import App from './App';
 
 const papers = [new Paper("The Guardian"), new Paper("The Independent"), new Paper("New York Times")]
 

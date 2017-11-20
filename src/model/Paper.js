@@ -26,7 +26,7 @@ class Paper {
 		let link = 'https://jsonplaceholder.typicode.com/posts'
 
 		// Get news
-		fetch(link).then(response => response.json())
+		return fetch(link).then(response => response.json())
 		.then(news => {
 			let random = Math.floor(news.length * Math.random())
 			return news[random] //get random article
