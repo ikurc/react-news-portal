@@ -3,10 +3,11 @@ import User from "./User"
 class Human extends User {
     constructor(name) {
         super(name)
+        this.news = []
     }
 
 	  handleUpdate = (data) => {
-        console.log(`${this.name} has read: ${data.title}`)
+        this.news = [...this.news, data.title]
     }
 }
 

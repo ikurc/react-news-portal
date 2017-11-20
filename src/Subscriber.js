@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 
 class Subscriber extends Component {
-    constructor(props){
-      super(props)
-    }
-
     // Set state for each paper (isSubscribed on current paper) "false" by default
     componentWillMount() {
       const portal = this.props.portal,
@@ -54,19 +50,25 @@ class Subscriber extends Component {
 
     render() {
       const papers = this.props.papers,
-            userName = this.props.user.name.toUpperCase()
+            userName = this.props.user.name.toUpperCase(),
+            news = this.props.user.news
 
       const subscriptions = papers.map((paper, i) => {
         return <button
                 className={this.state[paper.name] ? 'subscriber-btn active' : 'subscriber-btn' }
                 key={i}
                 onClick={() => this.handleSubscribe(paper)}>{paper.name}</button>})
+      const newsSection = news.map((newsitem, i) => <div className="newsItem" key={i}>{newsitem}</div>).reverse()
 
       return (
         <div className="subscriber">
           <span className='subscriber-close' onClick={this.deleteUser}></span>
           <span className="subscriber-name">{userName}</span>
-          <div className="subscriptions">{subscriptions}</div>
+
+          <div className="subscriptions-wrapper">
+            <div className="subscriptions">{subscriptions}</div>
+          <div className="news-section">{newsSection}</div>
+          </div>
         </div>
       )
     }

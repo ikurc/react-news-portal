@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import News from './model/News'
 
 class Publisher extends Component {
-    constructor(props){
-      super(props);
-      this.state = {
+    componentWillMount = () => {
+      this.setState({
         inputValue: ''
-      }
+      })
     }
 
     clearInput = () => {
@@ -60,18 +59,19 @@ class Publisher extends Component {
       const paperName = this.props.paper.name
       const storage = this.props.storage
 
-      const mynews = storage.getPaperNews(paperName).reverse()
+      const news = storage.getPaperNews(paperName).reverse()
       return (
           <div className="publisher">
             <span className="publisher-name">{paperName}</span>
             <div className="publisher-news-area" cols="20" rows="10">
-              {mynews.map((newsItem, i) => <p className="news-title" key={i}>{mynews.length - i + ". " + newsItem.title}</p>)}
+              {news.map((newsItem, i) => <p className="news-title" key={i}><span>{news.length - i}</span>{". " + newsItem.title}</p>)}
             </div>
 
             <div className="publisher-input-area">
               <input className="publisher-input" placeholder="type news title..." value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleEnter} type="text"/>
-            <button className="publisher-btn publisher-send-btn" onClick={this.handleClick}>Send</button>
+              <button className="publisher-btn publisher-send-btn" onClick={this.handleClick}>Send</button>
             </div>
+
             <button className="publisher-btn publisher-server-btn" onClick={this.handleServerRequest}>Get from server</button>
           </div>
       );

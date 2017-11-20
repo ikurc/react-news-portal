@@ -131,6 +131,7 @@ ul {
   align-items: flex-start;
 }
 
+.newsItem,
 .news-title {
   display: inline-block;
   margin: 4px 10px;
@@ -143,7 +144,14 @@ ul {
   /*width: 80%;*/
 }
 
-.news-title::first-letter {
+.newsItem {
+  display: block;
+  padding: 2px 5px;
+  margin: 5px 0;
+  max-width: 153px;
+}
+
+.news-title span {
   font-weight: bold;
   color: #27323A;
 }
@@ -230,12 +238,12 @@ option {
   position: relative;
   margin: 0 10px;
   border-radius: 2px;
-  min-width: 200px;
   background-color: #fff;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
 .subscriber-name {
+  display: block;
   color: #282c34;
   margin-bottom: 0;
   font-size: 15px;
@@ -244,25 +252,43 @@ option {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+/*.subscriber-close {*/
 .subscriber-close {
   cursor: pointer;
   position: absolute;
-  top: 6px;
-  right: 4px;
+  right: 0;
+  top: 0;
   display: block;
   width: 12px;
   height: 12px;
   background: url(user-close.svg);
-  -webkit-background-size: cover;
   background-size: cover;
+  margin: 13px 7px;
 }
 
 .subscriptions {
   display: flex;
   flex-direction: column;
   text-align: left;
-  -ms-align-items: flex-start;
   align-items: flex-start;
+  width: 200px;
+  padding-right: 5px;
+}
+
+.subscriptions-wrapper {
+  display: flex;
+  min-width: 170px;
+}
+
+.news-section {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 10px;
+  text-align: left;
+  min-width: 170px;
+  font-size: 13px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-height: 96px;
 }
 
 .subscriber-btn:visited {
@@ -285,11 +311,10 @@ option {
   border: 1px solid transparent;
   border-radius: 3px;
   width: 90%;
-  margin: 5px auto;
+  margin: 7px auto;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.7);
   background: none;
-  /*border: none;*/
   outline: none;
   cursor: pointer;
   padding: 5px 16px;
