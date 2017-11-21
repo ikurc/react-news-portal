@@ -5,6 +5,17 @@ import Subscibers from './Subscibers'
 import './App.css'
 
 class App extends Component {
+    updateState = () => {
+      this.setState({})
+    }
+
+    componentWillMount() {
+      const papers = this.props.portal.storage.papers
+
+      this.subscribeOnPaper(papers)
+      this.props.portal.on(this.updateState)
+    }
+
     addUser = (user) => {
       this.props.controller.addUser(user)
     }
@@ -35,17 +46,6 @@ class App extends Component {
 
     subscribeOnPaper = (papers) => {
       this.props.controller.subscribeOnPaper(papers)
-    }
-
-    updateState = () => {
-      this.setState({})
-    }
-
-    componentWillMount() {
-      const papers = this.props.portal.storage.papers
-
-      this.subscribeOnPaper(papers)
-      this.props.portal.on(this.updateState)
     }
 
     render() {

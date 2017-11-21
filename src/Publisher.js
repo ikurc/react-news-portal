@@ -3,15 +3,11 @@ import News from './model/News'
 
 class Publisher extends Component {
     componentWillMount = () => {
-      this.setState({
-        inputValue: ''
-      })
+      this.setState({inputValue: ''})
     }
 
     clearInput = () => {
-      this.setState({
-        inputValue: ''
-      })
+      this.setState({inputValue: ''})
     }
 
     handleServerRequest = () => {

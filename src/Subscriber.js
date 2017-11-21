@@ -50,13 +50,15 @@ class Subscriber extends Component {
     }
 
     render() {
+      console.log(this.state)
+      console.log(this.props.user)
       const papers = this.props.papers,
             userName = this.props.user.name.toUpperCase(),
             news = this.props.user.news
 
       const subscriptions = papers.map((paper, i) => {
         return <button
-                className={this.state[paper.name] ? 'subscriber-btn active' : 'subscriber-btn' }
+                className={this.state[paper.name] ? 'subscriber-btn active' : 'subscriber-btn activeq' }
                 key={i}
                 onClick={() => this.handleSubscribe(paper)}>{paper.name}</button>})
 
