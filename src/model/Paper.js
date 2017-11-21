@@ -17,9 +17,7 @@ class Paper {
 
 	notifyPortals = (data) => {
 		let portals = this.portals
-		if (portals) {
-			portals.forEach(portal => portal(this.name, data))
-		}
+		if (portals) portals.forEach(portal => portal(this.name, data))
 	}
 
 	getFromServer = () => {

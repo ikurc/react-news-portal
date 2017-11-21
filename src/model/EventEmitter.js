@@ -26,14 +26,14 @@ class EventEmitter {
 
 	unSubscribeFromAllPapers(user) {
 		for (let key in this.events) {
-			this.events[key] = this.events[key].filter(u => u != user)
+			this.events[key] = this.events[key].filter(u => u !== user)
 		}
 	}
 
 	// Notify all readers
 	notify = (eventType, data) => {
 		let readers = this.events[eventType]
-		readers ? readers.forEach(reader => reader(data)) : false
+		if (readers) readers.forEach(reader => reader(data))
 	}
 }
 

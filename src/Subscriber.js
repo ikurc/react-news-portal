@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import User from "./model/User"
 
 class Subscriber extends Component {
     // Response on click and sub / unsub user

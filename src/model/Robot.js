@@ -14,6 +14,7 @@ class Robot extends User {
 
 	textToBinary = (data) => {
 		let title = data.title
+		
 		return title.split('').map(char => {
 			return char.charCodeAt(0).toString(2)
 		}).join(' ')
