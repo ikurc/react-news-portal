@@ -93,8 +93,9 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #F2EBBF;
+  background-color: #27323A;
   flex-shrink: 2;
+  min-height: 250px;
 }
 
 .publisher {
@@ -116,7 +117,7 @@ ul {
 }
 
 .publisher-input-area {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .publisher-news-area {
@@ -124,7 +125,7 @@ ul {
   overflow-y: scroll;
   text-align: left;
   margin: 6px 0;
-  height: 120px;
+  height: 130px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -221,6 +222,9 @@ option {
 
 .input-wrapper {
   height: 25px;
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 2px;
 }
 
 .add-user-btn {
@@ -232,6 +236,7 @@ option {
 }
 
 .subscriber {
+  max-height: 150px;
   padding: 8px 5px;
   display: flex;
   flex-direction: column;
