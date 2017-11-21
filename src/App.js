@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from './Header'
 import Publishers from './Publishers'
-import Subscibers from './Subscibers'
+import Subscribers from './Subscribers'
 import './App.css'
 
 class App extends Component {
@@ -54,15 +54,13 @@ class App extends Component {
             name = portal.name,
             papers = storage.papers,
             users = storage.users
-      console.log(users)
-      console.log(portal.events)
 
       return (
         <div className="App">
           <Header portalName={name}/>
           <div className="content">
             <Publishers storage={storage} papers={papers} getFromInput={this.getFromInput} getFromServer={this.getFromServer}/>
-            <Subscibers
+            <Subscribers
                papers={papers}
                portal={portal}
                users={users}

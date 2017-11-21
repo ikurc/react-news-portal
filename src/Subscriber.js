@@ -1,25 +1,7 @@
 import React, { Component } from 'react'
+import User from "./model/User"
 
 class Subscriber extends Component {
-    // Set state for each paper (isSubscribed on current paper) "false" by default
-    componentWillMount() {
-      const portal = this.props.portal,
-            papers = this.props.papers,
-            user = this.props.user.handleUpdate
-
-      papers.forEach(paper => {
-        let isSubscriber = portal.isSubscriber(paper.name, user)
-        this.setState({[paper.name]: isSubscriber})
-      })
-    }
-
-    // Toggle status of paper (true / false)
-    toggleState = (key) => {
-      this.setState({
-        [key]: !this.state[key]
-      })
-    }
-
     // Response on click and sub / unsub user
     handleSubscribe = (paper) => {
       const portal = this.props.portal,
@@ -33,13 +15,13 @@ class Subscriber extends Component {
     // Subscribe
     subscribeOnPaper = (paper) => {
       this.props.subscribe(paper.name, this.props.user.handleUpdate)
-      this.toggleState(paper.name)
+      // this.toggleState(paper.name)
     }
 
     // Unsubscribe
     unSubscribeFromPaper = (paper) => {
       this.props.unsubscribe(paper.name, this.props.user.handleUpdate)
-      this.toggleState(paper.name)
+      // this.toggleState(paper.name)
     }
 
     // Delete
@@ -50,17 +32,21 @@ class Subscriber extends Component {
     }
 
     render() {
-      console.log(this.state)
-      console.log(this.props.user)
-      const papers = this.props.papers,
-            userName = this.props.user.name.toUpperCase(),
-            news = this.props.user.news
+      const portal = this.props.portal,
+            papers = this.props.papers,
+            user = this.props.user
+
+      const news = this.props.user.news,
+            userName = this.props.user.name.toUpperCase()
 
       const subscriptions = papers.map((paper, i) => {
+        let paperName = paper.name,
+            isSub = portal.isSubscriber(paperName, user.handleUpdate)
+
         return <button
-                className={this.state[paper.name] ? 'subscriber-btn active' : 'subscriber-btn activeq' }
+                className={isSub ? "subscriber-btn active" : "subscriber-btn"}
                 key={i}
-                onClick={() => this.handleSubscribe(paper)}>{paper.name}</button>})
+                onClick={() => this.handleSubscribe(paper)}>{paperName}</button>})
 
       const newsSection = news.map((newsitem, i) => <div className="newsItem" key={i}>{newsitem}</div>).reverse()
 
