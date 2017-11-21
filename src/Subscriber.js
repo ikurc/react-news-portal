@@ -6,22 +6,20 @@ class Subscriber extends Component {
     handleSubscribe = (paper) => {
       const portal = this.props.portal,
             user = this.props.user.handleUpdate,
-            isSubscriber = portal.isSubscriber(paper.name, user)
+            status = portal.isSubscriber(paper.name, user)
 
-      isSubscriber ? this.unSubscribeFromPaper(paper, user) :
+      status ? this.unSubscribeFromPaper(paper, user) :
                      this.subscribeOnPaper(paper, user)
     }
 
     // Subscribe
     subscribeOnPaper = (paper) => {
       this.props.subscribe(paper.name, this.props.user.handleUpdate)
-      // this.toggleState(paper.name)
     }
 
     // Unsubscribe
     unSubscribeFromPaper = (paper) => {
       this.props.unsubscribe(paper.name, this.props.user.handleUpdate)
-      // this.toggleState(paper.name)
     }
 
     // Delete
@@ -41,10 +39,10 @@ class Subscriber extends Component {
 
       const subscriptions = papers.map((paper, i) => {
         let paperName = paper.name,
-            isSub = portal.isSubscriber(paperName, user.handleUpdate)
+            status = portal.isSubscriber(paperName, user.handleUpdate)
 
         return <button
-                className={isSub ? "subscriber-btn active" : "subscriber-btn"}
+                className={status ? "subscriber-btn active" : "subscriber-btn"}
                 key={i}
                 onClick={() => this.handleSubscribe(paper)}>{paperName}</button>})
 
