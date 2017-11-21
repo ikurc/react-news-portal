@@ -1,0 +1,28 @@
+User guide
+
+-User
+1.	Go on the site. Create user.  Enter name, select type: human or robot, push the button “Create user”.
+•	In the browser window the new user with the entered name should be displayed.
+2.	Subscribe (select newspaper 1, subscribe on it). 
+•	The published news should be displayed in the user's news output field.
+•	Read news.
+3.	Subscribe (select newspaper 2, subscribe on it). 
+•	The published news should be displayed in the user's news output field.
+•	Read news.
+4.	Subscribe (select newspaper 3, subscribe on it). 
+•	The published news should be displayed in the user's news output field.
+•	Read news.
+5.	Unsubscribe (select newspaper 1, 2, 3, push the button “Unsubscribe”).
+•	User should not receive news from unsubscribed sources.
+6.	Delete user (push the button “Delete user”)
+•	The status display window should disappear from the browser window.
+
+
+-Admin
+1.	Go on the site.
+2.	Select newspaper.
+3.	Add news from input. Admin write some text and publish this text (push the button “Send news”).
+•	The news should be displayed in the news output field.
+4.	Add news from server. Admin push the button “Get news from server”
+•	The news should be displayed in the news output field.
+
