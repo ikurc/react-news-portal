@@ -104,7 +104,9 @@ class Subscribers extends Component {
                                                papers={papers} user={user}
                                                deleteUser={this.props.deleteUser}
                                                subscribe={this.props.subscribe}
-                                               unsubscribe={this.props.unsubscribe}/>)}
+                                               unsubscribe={this.props.unsubscribe}
+                                               unSubscribeFromAllPapers={this.props.unSubscribeFromAllPapers}
+                                             />)}
           </div>
 
         </div>

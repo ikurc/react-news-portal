@@ -45,6 +45,7 @@ class Subscriber extends Component {
     // Delete
     deleteUser = () => {
       let user = this.props.user
+      this.props.unSubscribeFromAllPapers(user.handleUpdate)
       this.props.deleteUser(user.ID)
     }
 
@@ -58,6 +59,7 @@ class Subscriber extends Component {
                 className={this.state[paper.name] ? 'subscriber-btn active' : 'subscriber-btn' }
                 key={i}
                 onClick={() => this.handleSubscribe(paper)}>{paper.name}</button>})
+
       const newsSection = news.map((newsitem, i) => <div className="newsItem" key={i}>{newsitem}</div>).reverse()
 
       return (
@@ -67,7 +69,7 @@ class Subscriber extends Component {
 
           <div className="subscriptions-wrapper">
             <div className="subscriptions">{subscriptions}</div>
-          <div className="news-section">{newsSection}</div>
+            <div className="news-section">{newsSection}</div>
           </div>
         </div>
       )
