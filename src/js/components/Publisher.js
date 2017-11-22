@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import News from './model/News'
+import News from '../model/News'
 
 class Publisher extends Component {
     componentWillMount = () => {

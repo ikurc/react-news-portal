@@ -61,7 +61,7 @@ ul {
 .portal-name:before {
   content: "";
   display: inline-block;
-  background-image: url(./reactlogo.svg);
+  background-image: url(../img/reactlogo.svg);
   -webkit-background-size: contain;
   background-size: contain;
   background-repeat: no-repeat;
@@ -83,7 +83,6 @@ ul {
 
 .publishers {
   background-color: rgba(0, 0, 0, 0.1);
-
   display: flex;
   justify-content: center;
 
@@ -97,7 +96,7 @@ ul {
   background-color: #27323A;
   flex-shrink: 2;
   min-height: 250px;
-  background-image: url(reactlogo-large.svg);
+  background-image: url(../img/reactlogo-large.svg);
   background-repeat: no-repeat;
   -webkit-background-size: 500px;
   background-size: 600px;
@@ -271,7 +270,7 @@ option {
   display: block;
   width: 12px;
   height: 12px;
-  background: url(user-close.svg);
+  background: url(../img/user-close.svg);
   background-size: cover;
   margin: 13px 7px;
 }

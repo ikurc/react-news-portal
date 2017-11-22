@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Subscriber from "./Subscriber"
-import Human from "./model/Human"
-import Robot from "./model/Robot"
+import Human from "../model/Human"
+import Robot from "../model/Robot"
 
 
 class Subscribers extends Component {
