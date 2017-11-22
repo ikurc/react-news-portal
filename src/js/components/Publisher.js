@@ -13,7 +13,7 @@ class Publisher extends Component {
     handleServerRequest = () => {
         //hard code
         const requestURLArr = ['http://localhost:3001/guardian',
-            'http://localhost:3001/independet',
+            'http://localhost:3001/independent',
             'http://localhost:3001/nyt'];
 
         const paper = this.props.paper;
