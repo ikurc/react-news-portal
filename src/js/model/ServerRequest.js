@@ -27,7 +27,7 @@ class ServerRequest {
                 let dataNews = data[random];
                 return new News(dataNews.title, paper, dataNews.body)
             }).then(news => {
-                paper.notifyPortals(news);
+                paper.notifySubscribers(news);
                 return news;
             }))
             .catch(error => console.log('Fetch Error :', error));

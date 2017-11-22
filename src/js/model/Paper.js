@@ -4,20 +4,20 @@ class Paper {
 	// hardcode
 	constructor(name) {
 		this.name = name;
-		this.portals = []
+		this.subscribers = []
 	}
 
-	subscribePortal = (fn) => {
-		this.portals.push(fn)
+	subscribeSubscribers = (fn) => {
+		this.subscribers.push(fn)
 	};
 
-	unSubscribePortal = (fn) => {
-		this.portals = this.portals.filter(portal => portal !== fn)
+	unSubscribeSubscribers = (fn) => {
+		this.subscribers = this.subscribers.filter(portal => portal !== fn)
 	};
 
-	notifyPortals = (data) => {
-		let portals = this.portals;
-		if (portals) portals.forEach(portal => portal(this.name, data))
+	notifySubscribers = (data) => {
+		let subscribers = this.subscribers;
+		if (subscribers) subscribers.forEach(portal => portal(this.name, data))
 	};
 
     getFromServer = (requestURL, paper) => {
@@ -25,8 +25,7 @@ class Paper {
     };
 
 	getFromInput = (data) => {
-		this.notifyPortals(data);
-		// return data (maybe)
+		this.notifySubscribers(data);
 	}
 }
 

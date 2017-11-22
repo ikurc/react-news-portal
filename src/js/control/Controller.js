@@ -29,18 +29,13 @@ class Controller {
   }
 
   subscribeOnPaper(papers) {
-    papers.forEach(paper => paper.subscribePortal(this.model.notify))
+    papers.forEach(paper => paper.subscribeSubscribers(this.model.notify))
   }
 
   unSubscribeFromAllPapers(user) {
     this.model.unSubscribeFromAllPapers(user);
     this.model.trigger()
   }
-
-  // getFromServer() {
-  //   this.model.trigger();
-  // }
-
 }
 
 export default Controller

@@ -2,7 +2,7 @@ import User from "./User"
 
 class Human extends User {
     constructor(name) {
-        super(name)
+        super(name);
         this.news = []
     }
 
