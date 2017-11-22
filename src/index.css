@@ -254,6 +254,7 @@ option {
 
 .subscriber-name {
   display: block;
+  text-transform: uppercase;
   color: #282c34;
   margin-bottom: 0;
   font-size: 15px;

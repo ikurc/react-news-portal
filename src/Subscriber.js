@@ -8,7 +8,7 @@ class Subscriber extends Component {
             status = portal.isSubscriber(paper.name, user)
 
       status ? this.unSubscribeFromPaper(paper, user) :
-                     this.subscribeOnPaper(paper, user)
+               this.subscribeOnPaper(paper, user)
     }
 
     // Subscribe
@@ -33,24 +33,25 @@ class Subscriber extends Component {
             papers = this.props.papers,
             user = this.props.user
 
-      const news = this.props.user.news,
-            userName = this.props.user.name.toUpperCase()
+      const userName = user.name,
+            userNews = user.news
 
+      // User`s subscriptions
       const subscriptions = papers.map((paper, i) => {
         let paperName = paper.name,
             status = portal.isSubscriber(paperName, user.handleUpdate)
 
-        return <button
-                className={status ? "subscriber-btn active" : "subscriber-btn"}
-                key={i}
-                onClick={() => this.handleSubscribe(paper)}>{paperName}</button>})
+        return <button className={status ? "subscriber-btn active" : "subscriber-btn"}
+                       key={i}
+                       onClick={() => this.handleSubscribe(paper)}>{paperName}</button>})
 
-      const newsSection = news.map((newsitem, i) => <div className="newsItem" key={i}>{newsitem}</div>).reverse()
+      // User`s news container
+      const newsSection = userNews.map((newsitem, i) => <div className="newsItem" key={i}>{newsitem}</div>).reverse()
 
       return (
         <div className="subscriber">
           <span className='subscriber-close' onClick={this.deleteUser}></span>
-          <span className="subscriber-name">{userName}</span>
+        <span className="subscriber-name">{userName}</span>
 
           <div className="subscriptions-wrapper">
             <div className="subscriptions">{subscriptions}</div>

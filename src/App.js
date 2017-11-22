@@ -5,75 +5,88 @@ import Subscribers from './Subscribers'
 import './App.css'
 
 class App extends Component {
-    updateState = () => {
-      this.setState({})
-    }
+  updateState = () => {
+    this.setState({})
+  }
 
-    componentWillMount() {
-      const papers = this.props.portal.storage.papers
+  componentDidMount() {
+    const portal = this.props.portal,
+          storage = portal.storage,
+          papers = storage.papers
 
-      this.subscribeOnPaper(papers)
-      this.props.portal.on(this.updateState)
-    }
+    this.subscribeOnPaper(papers) // Portal automatically subscribes itself on 3 default papers from storage`s "papers" array
+    portal.on(this.updateState) // subscribe "updateState" method of VIEW on model changes
+  }
 
-    addUser = (user) => {
-      this.props.controller.addUser(user)
-    }
+  componentWillUnmount() {
+    this.props.portal.off(this.updateState) // unsubscribe "updateState" method of VIEW on model changes when componet dies
+  }
 
-    deleteUser = (user) => {
-      this.props.controller.deleteUser(user)
-    }
+  // Controller methods
+  addUser = (user) => {
+    this.props.controller.addUser(user)
+  }
 
-    getFromInput = (news) => {
-      this.props.controller.addNews(news)
-    }
+  deleteUser = (user) => {
+    this.props.controller.deleteUser(user)
+  }
 
-    getFromServer = (news) => {
-      this.props.controller.addNews(news)
-    }
+  getFromInput = (news) => {
+    this.props.controller.addNews(news)
+  }
 
-    subscribe = (paper, user) => {
-      this.props.controller.subscribe(paper,user)
-    }
+  getFromServer = (news) => {
+    this.props.controller.addNews(news)
+  }
 
-    unsubscribe = (paper, user) => {
-      this.props.controller.unsubscribe(paper, user)
-    }
+  subscribe = (paper, user) => {
+    this.props.controller.subscribe(paper,user)
+  }
 
-    unSubscribeFromAllPapers = (user) => {
-      this.props.controller.unSubscribeFromAllPapers(user)
-    }
+  unsubscribe = (paper, user) => {
+    this.props.controller.unsubscribe(paper, user)
+  }
 
-    subscribeOnPaper = (papers) => {
-      this.props.controller.subscribeOnPaper(papers)
-    }
+  unSubscribeFromAllPapers = (user) => {
+    this.props.controller.unSubscribeFromAllPapers(user)
+  }
 
-    render() {
-      const portal = this.props.portal,
-            storage = portal.storage,
-            name = portal.name,
-            papers = storage.papers,
-            users = storage.users
+  subscribeOnPaper = (papers) => {
+    this.props.controller.subscribeOnPaper(papers)
+  }
 
-      return (
-        <div className="App">
-          <Header portalName={name}/>
-          <div className="content">
-            <Publishers storage={storage} papers={papers} getFromInput={this.getFromInput} getFromServer={this.getFromServer}/>
-            <Subscribers
-               papers={papers}
-               portal={portal}
-               users={users}
-               addUser={this.addUser}
-               deleteUser={this.deleteUser}
-               subscribe={this.subscribe}
-               unsubscribe={this.unsubscribe}
-               unSubscribeFromAllPapers={this.unSubscribeFromAllPapers}
-             />
-          </div>
+  render() {
+    const portal = this.props.portal,
+          portalName = portal.name,
+          storage = portal.storage
+
+    const papers = storage.papers,
+          users = storage.users
+
+    return (
+      <div className="App">
+        <Header portalName={portalName}/>
+        <div className="content">
+          <Publishers
+            papers={papers}
+            getPaperNews={storage.getPaperNews}
+            getFromInput={this.getFromInput}
+            getFromServer={this.getFromServer}
+          />
+          <Subscribers
+            portal={portal}
+            users={users}
+            papers={papers}
+            addUser={this.addUser}
+            deleteUser={this.deleteUser}
+            subscribe={this.subscribe}
+            unsubscribe={this.unsubscribe}
+            unSubscribeFromAllPapers={this.unSubscribeFromAllPapers}
+           />
         </div>
-      )
-    }
+      </div>
+    )
+  }
 }
 
 export default App

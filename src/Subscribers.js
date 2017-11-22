@@ -1,117 +1,95 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Subscriber from "./Subscriber"
 import Human from "./model/Human"
 import Robot from "./model/Robot"
 
 
 class Subscribers extends Component {
-    constructor(props){
-      super(props);
-      this.state = {
-        inputValue: '',
-        // default human value
-        selectValue: 'Human',
-        types: ['Human', 'Robot']
-      }
+  constructor(props){
+    super(props);
+    this.state = {
+      inputValue: '',
+      selectValue: 'Human', // default human value
+      options: ['Human', 'Robot']
     }
+  }
 
-    clearInput = () => {
-      this.setState({inputValue: ''})
-    }
+  clearInput = () => {
+    this.setState({inputValue: ''})
+  }
 
-    handleClick = () => {
-      let inputValue = this.state.inputValue,
-          selectValue = this.state.selectValue
+  handleInputChange = (e) => {
+    this.setState({inputValue: e.target.value})
+  }
 
-      if (inputValue) {
-        switch (selectValue) {
-          case "Human":
-            let human = new Human(`${inputValue}`)
-            this.props.addUser(human)
-            break;
+  handleSelectChange = (e) => {
+    this.setState({selectValue: e.target.value})
+  }
 
-          case "Robot":
-            let robot = new Robot(`${inputValue}`)
-            this.props.addUser(robot)
-            break
-          default:
-            break
-        }
+  handleSubmit = (e) => {
+    let inputValue = this.state.inputValue,
+        selectValue = this.state.selectValue
+
+    let isEnter = e.key === 'Enter',
+        isLeftClick = e.button === 0
+
+    if ((isLeftClick || isEnter) && inputValue) {
+      switch (selectValue) {
+        case "Human":
+          let human = new Human(inputValue) // New Human with name (inputValue)
+          this.props.addUser(human)
+          break
+
+        case "Robot":
+          let robot = new Robot(inputValue) // New Robot with name (inputValue)
+          this.props.addUser(robot)
+          break
+        default:
+          break
       }
       this.clearInput()
     }
+  }
 
-    handleEnter = (e) => {
-      let inputValue = e.target.value,
-          selectValue = this.state.selectValue,
-          isEnter = e.key === 'Enter'
+  render() {
+    const portal = this.props.portal,
+          users = this.props.users,
+          papers = this.props.papers
 
-      if (isEnter && inputValue) {
-        switch (selectValue) {
-          case "Human":
-            let human = new Human(`${inputValue}`)
-            this.props.addUser(human)
-            break;
+    const inputValue = this.state.inputValue,
+          options = this.state.options
 
-          case "Robot":
-            let robot = new Robot(`${inputValue}`)
-            this.props.addUser(robot)
-            break
-          default:
-            break
-        }
-        this.clearInput()
-      }
-    }
+    return (
+      <div className="subscribers">
+        <div className="input-wrapper">
+          <input className="input-user" value={inputValue} onChange={this.handleInputChange} onKeyPress={this.handleSubmit}/>
 
-    handleInputChange = (e) => {
-      let value = e.target.value
-      this.setState({
-        inputValue: value
-      })
-    }
+          <select className="select-type" onChange={this.handleSelectChange}>
+            {options.map((type, i) => <option key={i} value={type}>{type}</option>)}
+          </select>
 
-    handleSelectChange = (e) => {
-      let value = e.target.value
-      this.setState({
-        selectValue: value
-      })
-    }
-
-    render() {
-      const users = this.props.users
-      const papers = this.props.papers
-      const portal = this.props.portal
-      const options = this.state.types
-
-      return (
-        <div className="subscribers">
-          <div className="input-wrapper">
-            <input className="input-user"
-                   value={this.state.inputValue}
-                   onChange={this.handleInputChange}
-                   onKeyPress={this.handleEnter}/>
-
-            <select className="select-type" onChange={this.handleSelectChange}>
-              {options.map((type, index) => <option key={index} value={type}>{type}</option>)}
-            </select>
-
-            <button className="add-user-btn" onClick={this.handleClick}>Add user</button>
-          </div>
-
-          <div className="subscribers-content">
-            {users.map((user,i) => <Subscriber key={i} portal={portal}
-                                               papers={papers} user={user}
-                                               deleteUser={this.props.deleteUser}
-                                               subscribe={this.props.subscribe}
-                                               unsubscribe={this.props.unsubscribe}
-                                               unSubscribeFromAllPapers={this.props.unSubscribeFromAllPapers}
-                                             />)}
-          </div>
-
+          <button className="add-user-btn" onClick={this.handleSubmit}>Add user</button>
         </div>
-      );
-    }
+
+        <div className="subscribers-content">
+          {users.map((user,i) => {
+            return (
+              <Subscriber
+                key={i}
+                portal={portal}
+                papers={papers}
+                user={user}
+                subscribe={this.props.subscribe}
+                unsubscribe={this.props.unsubscribe}
+                deleteUser={this.props.deleteUser}
+                unSubscribeFromAllPapers={this.props.unSubscribeFromAllPapers}/>
+              )
+            })
+          }
+        </div>
+      </div>
+    )
+  }
 }
 
-export default Subscribers;
+export default Subscribers

@@ -1,7 +1,8 @@
 class User {
 	constructor(name) {
 		this.name = name;
-		this.ID = User.generateID();
+		this.ID = User.generateID()
+		this.news = []
 	}
 
 	static generateID(a,b) {

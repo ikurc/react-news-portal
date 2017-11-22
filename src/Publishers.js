@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react'
 import Publisher from "./Publisher"
 
-class Publishers extends Component {
-  render() {
-    const papers = this.props.papers
-    return (
-        <div className="publishers">
-          {papers.map((paper,i) => <Publisher storage={this.props.storage} key={i} paper={paper} getFromInput={this.props.getFromInput} getFromServer={this.props.getFromServer}/>)}
-        </div>
-    );
-  }
+const Publishers = (props) => {
+  const papers = props.papers
+
+  return (
+    <div className="publishers">
+      {papers.map((paper,i) => <Publisher key={i} paper={paper} getPaperNews={props.getPaperNews} getFromInput={props.getFromInput} getFromServer={props.getFromServer}/>)}
+    </div>
+  )
 }
 
-export default Publishers;
+export default Publishers

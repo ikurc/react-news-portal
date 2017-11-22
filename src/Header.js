@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-class Header extends Component {
-  render() {
-    return (
-        <header className="header">
-          <p className="portal-name">{this.props.portalName}</p>
-        </header>
-    );
-  }
+const Header = (props) => {
+  return (
+    <header className="header">
+      <p className="portal-name">{props.portalName}</p>
+    </header>
+  )
 }
 
-export default Header;
+export default Header

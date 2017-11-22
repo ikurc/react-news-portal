@@ -1,23 +1,22 @@
 import News from './News'
 
 class Paper {
-	// hardcode
 	constructor(name) {
 		this.name = name
-		this.portals = []
+		this.handlers = [] //portals "notify" method
 	}
 
-	subscribePortal = (fn) => {
-		this.portals.push(fn)
+	subscribe = (fn) => {
+		this.handlers.push(fn)
 	}
 
-	unSubscribePortal = (fn) => {
-		this.portals = this.portals.filter(portal => portal !== fn)
+	unSubscribe = (fn) => {
+		this.handlers = this.handlers.filter(handler => handler !== fn)
 	}
 
-	notifyPortals = (data) => {
-		let portals = this.portals
-		if (portals) portals.forEach(portal => portal(this.name, data))
+	notifyHandlers = (data) => {
+		let handlers = this.handlers
+		if (handlers) handlers.forEach(handler => handler(this.name, data))
 	}
 
 	getFromServer = () => {
@@ -31,15 +30,14 @@ class Paper {
 		})
 		.then(newsItem => {
 			let news = new News(newsItem.title, this)
-			this.notifyPortals(news)
+			this.notifyHandlers(news)
 			return news
 		})
 		.catch(error => console.log(error))
 	}
 
 	getFromInput = (data) => {
-		this.notifyPortals(data)
-		// return data (maybe)
+		this.notifyHandlers(data)
 	}
 }
 

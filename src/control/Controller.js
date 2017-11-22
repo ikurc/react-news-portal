@@ -1,10 +1,6 @@
-class Control {
+class Controller {
   constructor(model) {
     this.model = model
-  }
-
-  handleChange = () => {
-    console.log(this.model)
   }
 
   addNews(news) {
@@ -33,18 +29,14 @@ class Control {
   }
 
   subscribeOnPaper(papers) {
-    papers.forEach(paper => paper.subscribePortal(this.model.notify))
+    papers.forEach(paper => paper.subscribe(this.model.notify))
+    this.model.trigger()
   }
 
   unSubscribeFromAllPapers(user) {
     this.model.unSubscribeFromAllPapers(user)
     this.model.trigger()
   }
-
-  // getFromServer() {
-  //   this.model.trigger();
-  // }
-
 }
 
-export default Control
+export default Controller
