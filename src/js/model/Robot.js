@@ -4,7 +4,6 @@ class Robot extends User {
 	constructor(name) {
 		super(name);
 		this.name = `${name}_bot`;
-		this.news = []
 	}
 
   handleUpdate = (data) => {
