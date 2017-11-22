@@ -76,16 +76,15 @@ class Subscribers extends Component {
             return (
               <Subscriber
                 key={i}
+                user={user}
                 portal={portal}
                 papers={papers}
-                user={user}
                 subscribe={this.props.subscribe}
                 unsubscribe={this.props.unsubscribe}
                 deleteUser={this.props.deleteUser}
                 unSubscribeFromAllPapers={this.props.unSubscribeFromAllPapers}/>
               )
-            })
-          }
+            })}
         </div>
       </div>
     )
