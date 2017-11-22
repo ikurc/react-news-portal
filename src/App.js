@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Header from './Header'
 import Publishers from './Publishers'
 import Subscribers from './Subscribers'
+import './App.css'
 
 class App extends Component {
     updateState = () => {
