@@ -4,22 +4,22 @@ import ReactDOM from 'react-dom'
 import './css/index.css'
 
 import Portal from './js/model/Portal'
-import Control from './js/control/Control'
+import Controller from './js/control/Controller'
 import Storage from './js/model/Storage'
 import Paper from './js/model/Paper'
 
 import App from './js/components/App'
 
-const papers = [new Paper("The Guardian"), new Paper("The Independent"), new Paper("New York Times")]
+const papers = [new Paper("The Guardian"), new Paper("The Independent"), new Paper("New York Times")];
 
 // Data storage
-const storage = new Storage(papers)
+const storage = new Storage(papers);
 
 // Model
-const model = new Portal("React News Portal", storage)
+const model = new Portal("React News Portal", storage);
 
 // Controller(model)
-const controller = new Control(model)
+const controller = new Controller(model);
 
 // View (model, control)
-ReactDOM.render(<App portal={model} controller={controller}/>, document.getElementById('root'))
+ReactDOM.render(<App portal={model} controller={controller}/>, document.getElementById('root'));

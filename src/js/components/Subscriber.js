@@ -1,51 +1,52 @@
 import React, { Component } from 'react'
+import generateID from '../model/generateID';
 
 class Subscriber extends Component {
     // Response on click and sub / unsub user
     handleSubscribe = (paper) => {
       const portal = this.props.portal,
             user = this.props.user.handleUpdate,
-            status = portal.isSubscriber(paper.name, user)
+            status = portal.isSubscriber(paper.name, user);
 
       status ? this.unSubscribeFromPaper(paper, user) :
                      this.subscribeOnPaper(paper, user)
-    }
+    };
 
     // Subscribe
     subscribeOnPaper = (paper) => {
       this.props.subscribe(paper.name, this.props.user.handleUpdate)
-    }
+    };
 
     // Unsubscribe
     unSubscribeFromPaper = (paper) => {
       this.props.unsubscribe(paper.name, this.props.user.handleUpdate)
-    }
+    };
 
     // Delete
     deleteUser = () => {
-      let user = this.props.user
-      this.props.unSubscribeFromAllPapers(user.handleUpdate)
+      let user = this.props.user;
+      this.props.unSubscribeFromAllPapers(user.handleUpdate);
       this.props.deleteUser(user.ID)
-    }
+    };
 
     render() {
       const portal = this.props.portal,
             papers = this.props.papers,
-            user = this.props.user
+            user = this.props.user;
 
       const news = this.props.user.news,
-            userName = this.props.user.name.toUpperCase()
+            userName = this.props.user.name.toUpperCase();
 
-      const subscriptions = papers.map((paper, i) => {
+      const subscriptions = papers.map((paper) => {
         let paperName = paper.name,
-            status = portal.isSubscriber(paperName, user.handleUpdate)
+            status = portal.isSubscriber(paperName, user.handleUpdate);
 
         return <button
                 className={status ? "subscriber-btn active" : "subscriber-btn"}
-                key={i}
-                onClick={() => this.handleSubscribe(paper)}>{paperName}</button>})
+                key={generateID()}
+                onClick={() => this.handleSubscribe(paper)}>{paperName}</button>});
 
-      const newsSection = news.map((newsitem, i) => <div className="newsItem" key={i}>{newsitem}</div>).reverse()
+      const newsSection = news.map((newsitem) => <div className="newsItem" key={generateID()}>{newsitem}</div>).reverse();
 
       return (
         <div className="subscriber">

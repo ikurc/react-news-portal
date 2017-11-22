@@ -17,72 +17,72 @@ class Subscribers extends Component {
 
     clearInput = () => {
       this.setState({inputValue: ''})
-    }
+    };
 
     handleClick = () => {
       let inputValue = this.state.inputValue,
-          selectValue = this.state.selectValue
+          selectValue = this.state.selectValue;
 
       if (inputValue) {
         switch (selectValue) {
           case "Human":
-            let human = new Human(`${inputValue}`)
-            this.props.addUser(human)
+            let human = new Human(`${inputValue}`);
+            this.props.addUser(human);
             break;
 
           case "Robot":
-            let robot = new Robot(`${inputValue}`)
-            this.props.addUser(robot)
-            break
+            let robot = new Robot(`${inputValue}`);
+            this.props.addUser(robot);
+            break;
           default:
             break
         }
       }
       this.clearInput()
-    }
+    };
 
     handleEnter = (e) => {
       let inputValue = e.target.value,
           selectValue = this.state.selectValue,
-          isEnter = e.key === 'Enter'
+          isEnter = e.key === 'Enter';
 
       if (isEnter && inputValue) {
         switch (selectValue) {
           case "Human":
-            let human = new Human(`${inputValue}`)
-            this.props.addUser(human)
+            let human = new Human(`${inputValue}`);
+            this.props.addUser(human);
             break;
 
           case "Robot":
-            let robot = new Robot(`${inputValue}`)
-            this.props.addUser(robot)
-            break
+            let robot = new Robot(`${inputValue}`);
+            this.props.addUser(robot);
+            break;
           default:
             break
         }
         this.clearInput()
       }
-    }
+    };
 
     handleInputChange = (e) => {
-      let value = e.target.value
+      let value = e.target.value;
       this.setState({
         inputValue: value
       })
-    }
+    };
 
     handleSelectChange = (e) => {
-      let value = e.target.value
+      let value = e.target.value;
       this.setState({
         selectValue: value
       })
-    }
+    };
 
     render() {
-      const users = this.props.users
-      const papers = this.props.papers
-      const portal = this.props.portal
-      const options = this.state.types
+      const users = this.props.users;
+      const papers = this.props.papers;
+      const portal = this.props.portal;
+      const options = this.state.types;
 
       return (
         <div className="subscribers">
@@ -96,13 +96,13 @@ class Subscribers extends Component {
               {options.map((type, index) => <option key={index} value={type}>{type}</option>)}
             </select>
 
-            <button className="add-user-btn" onClick={this.handleClick}>Add user</button>
+            <button className="add-user-btn" onClick={this.handleClick}>Create Profile</button>
           </div>
 
           <div className="subscribers-content">
-            {users.map((user,i) => <Subscriber key={i} portal={portal}
+            {users.map((user) => <Subscriber key={user.ID} portal={portal}
                                                papers={papers} user={user}
-                                               deleteUser={this.props.deleteUser}
+                                                  deleteUser={this.props.deleteUser}
                                                subscribe={this.props.subscribe}
                                                unsubscribe={this.props.unsubscribe}
                                                unSubscribeFromAllPapers={this.props.unSubscribeFromAllPapers}
