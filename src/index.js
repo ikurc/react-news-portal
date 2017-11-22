@@ -10,10 +10,8 @@ import Paper from './js/model/Paper'
 
 import App from './js/components/App'
 
-const papers = [new Paper("The Guardian"), new Paper("The Independent"), new Paper("New York Times")];
-
 // Data storage
-const storage = new Storage(papers);
+const storage = new Storage(new Paper("The Guardian"), new Paper("The Independent"), new Paper("New York Times"));
 
 // Model
 const model = new Portal("React News Portal", storage);

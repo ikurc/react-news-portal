@@ -1,7 +1,7 @@
 class Storage {
-  constructor(papers) {
-    this.papers = papers
-    this.users = []
+  constructor(...papers) {
+    this.papers = papers;
+    this.users = [];
     this.news = []
   }
 
@@ -40,7 +40,7 @@ class Storage {
 
   getPaperNews = (paper) => {
     return this.news.filter(news => news.paper === paper)
-  }
+  };
 
   deleteNews(ID){
     let newsList = this.news;
