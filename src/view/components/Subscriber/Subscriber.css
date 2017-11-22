@@ -1,0 +1,91 @@
+.subscriber {
+  max-height: 145px;
+  padding: 8px 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  margin: 8px 10px;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.subscriber-name {
+  display: block;
+  text-transform: uppercase;
+  color: #282c34;
+  margin-bottom: 0;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/*.subscriber-close {*/
+.subscriber-close {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url(../../img/user-close.svg);
+  background-size: cover;
+  margin: 13px 7px;
+}
+
+.subscriptions {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+  width: 200px;
+  padding-right: 5px;
+}
+
+.subscriptions-wrapper {
+  display: flex;
+  min-width: 170px;
+}
+
+.news-section {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 10px;
+  text-align: left;
+  min-width: 180px;
+  font-size: 13px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-height: 96px;
+}
+
+.subscriber-btn:visited {
+  background: #64B543;
+  color: #fff;
+}
+
+.subscriber-btn:hover {
+  border: 1px solid #64B543;
+}
+
+.subscriber-btn.active {
+  background: #64B543;
+  transition: all .2s;
+	color: #fff;
+	transform: scale(1.1);
+}
+
+.subscriber-btn {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  width: 90%;
+  margin: 7px auto;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+  background: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 16px;
+}

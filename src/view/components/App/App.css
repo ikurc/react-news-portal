@@ -1,0 +1,57 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.publishers,
+.subscribers {
+  padding: 20px;
+}
+
+.newsItem,
+.news-title {
+  display: inline-block;
+  margin: 4px 10px;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.newsItem {
+  display: block;
+  padding: 2px 5px;
+  margin: 5px 0;
+  max-width: 153px;
+}
+
+.news-title span {
+  font-weight: bold;
+  color: #27323A;
+}
+
+.publisher-btn,
+.add-user-btn,
+.select-type {
+  color: #282c34;
+  font-size: 12px;
+  font-weight: 800;
+  background-color: #27323A;
+  color: white;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  text-align: center;
+  user-select: none;
+  overflow: hidden;
+  vertical-align: middle;
+  border-radius: 2px;
+  margin-left: 5px;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}

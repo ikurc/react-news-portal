@@ -1,0 +1,47 @@
+.subscribers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #27323A;
+  flex-shrink: 2;
+  min-height: 250px;
+  background-image: url(../../img/reactlogo-large.svg);
+  background-repeat: no-repeat;
+  -webkit-background-size: 500px;
+  background-size: 600px;
+  background-position: 900px 20px;
+}
+
+.subscribers-content {
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.input-wrapper {
+  height: 25px;
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 2px;
+}
+
+.add-user-btn {
+  height: 100%;
+}
+
+.input-user {
+  padding: 5px 10px;
+}
+
+.select-type {
+  outline: none;
+  cursor: pointer;
+  padding: 0px 6px;
+  height: 100%;
+}
+
+.select-type:focus {
+  outline: none;
+}

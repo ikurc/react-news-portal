@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Subscriber from "./Subscriber"
-import Human from "./model/Human"
-import Robot from "./model/Robot"
-
+import Subscriber from "../Subscriber/Subscriber.js"
+import Human from "../../../model/Human"
+import Robot from "../../../model/Robot"
+import './Subscribers.css'
 
 class Subscribers extends Component {
   constructor(props){

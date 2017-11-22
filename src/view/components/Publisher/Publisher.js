@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import News from './model/News'
+import News from '../../../model/News'
+import './Publisher.css'
 
 class Publisher extends Component {
   constructor(props) {

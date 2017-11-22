@@ -1,5 +1,7 @@
 import React from 'react'
-import Publisher from "./Publisher"
+import Publisher from "../Publisher/Publisher.js"
+import './Publishers.css'
+
 
 const Publishers = (props) => {
   const papers = props.papers

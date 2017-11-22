@@ -6,7 +6,7 @@ import Controller from './control/Controller'
 import Storage from './model/Storage'
 import Paper from './model/Paper'
 
-import App from './App'
+import App from './view/components/App/App'
 
 import './index.css'
 
