@@ -13,9 +13,9 @@ const Publishers = (props) => {
           <Publisher
             key={i}
             paper={paper}
+            addNews={props.addNews}
             getPaperNews={props.getPaperNews}
-            getFromInput={props.getFromInput}
-            getFromServer={props.getFromServer}/>
+          />
         )
       })}
     </div>

@@ -32,13 +32,13 @@ class App extends Component {
     this.props.controller.deleteUser(user)
   }
 
-  getFromInput = (news) => {
+  addNews = (news) => {
     this.props.controller.addNews(news)
   }
 
-  getFromServer = (news) => {
-    this.props.controller.addNews(news)
-  }
+  // getFromServer = (news) => {
+  //   this.props.controller.addNews(news)
+  // }
 
   subscribe = (paper, user) => {
     this.props.controller.subscribe(paper,user)
@@ -70,9 +70,8 @@ class App extends Component {
         <div className="content">
           <Publishers
             papers={papers}
+            addNews={this.addNews}
             getPaperNews={storage.getPaperNews}
-            getFromInput={this.getFromInput}
-            getFromServer={this.getFromServer}
           />
           <Subscribers
             portal={portal}

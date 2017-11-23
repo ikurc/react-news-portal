@@ -18,7 +18,7 @@ class Publisher extends Component {
 
   handleServerRequest = () => {
     let paper = this.props.paper
-    paper.getFromServer().then(data => this.props.getFromServer(data))
+    paper.getFromServer().then(data => this.props.addNews(data))
   }
 
   handleSubmit = (e) => {
@@ -31,7 +31,7 @@ class Publisher extends Component {
       let news = new News(`${value}`, paper)
 
       paper.getFromInput(news)
-      this.props.getFromInput(news)
+      this.props.addNews(news)
       this.clearInput()
     }
   }

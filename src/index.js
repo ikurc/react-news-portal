@@ -16,17 +16,11 @@ import './index.css'
 // Initial data arrays (some "external API")
 // const users = [new Human("Igor"), new Robot("Robo1")]
 const papers = [new Paper("The Guardian"), new Paper("The Independent"), new Paper("New York Times")]
-
 // Data storage
 // const storage = new Storage(papers, users)
+
 const storage = new Storage(papers)
-
-
-// Model
 const model = new Portal("React News Portal", storage)
-
-// Controller(model)
 const controller = new Controller(model)
 
-// View (model, control)
 ReactDOM.render(<App portal={model} controller={controller}/>, document.getElementById('root'))
