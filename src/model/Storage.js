@@ -1,8 +1,8 @@
 class Storage {
-  constructor(papers) {
+  constructor(papers = [], users = [], news = []) {
     this.papers = papers
-    this.users = []
-    this.news = []
+    this.users = users
+    this.news = news
   }
 
   // Users methods

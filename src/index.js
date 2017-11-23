@@ -4,17 +4,23 @@ import ReactDOM from 'react-dom'
 import Portal from './model/Portal'
 import Controller from './control/Controller'
 import Storage from './model/Storage'
+
 import Paper from './model/Paper'
+// import Human from './model/Human'
+// import Robot from './model/Robot'
 
 import App from './view/components/App/App'
 
 import './index.css'
 
-// Initial papers array (some "external API")
+// Initial data arrays (some "external API")
+// const users = [new Human("Igor"), new Robot("Robo1")]
 const papers = [new Paper("The Guardian"), new Paper("The Independent"), new Paper("New York Times")]
 
 // Data storage
+// const storage = new Storage(papers, users)
 const storage = new Storage(papers)
+
 
 // Model
 const model = new Portal("React News Portal", storage)
