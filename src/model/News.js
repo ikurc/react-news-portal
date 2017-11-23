@@ -1,8 +1,10 @@
+import generateID from './generateID'
+
 class News {
   constructor(title, paper) {
     this.title = title
     this.paper = paper
-    this.ID = News.generateID()
+    this.ID = generateID()
   }
 
 	static generateID(a,b){

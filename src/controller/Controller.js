@@ -28,8 +28,8 @@ class Controller {
     this.model.trigger()
   }
 
-  unSubscribeFromAllPapers(user) {
-    this.model.unSubscribeFromAllPapers(user)
+  unSubscribeFromAllEvents(user) {
+    this.model.unSubscribeFromAllEvents(user)
     this.model.trigger()
   }
 

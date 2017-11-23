@@ -43,8 +43,8 @@ class App extends Component {
     this.props.controller.unsubscribe(paper, user)
   }
 
-  unSubscribeFromAllPapers = (user) => {
-    this.props.controller.unSubscribeFromAllPapers(user)
+  unSubscribeFromAllEvents = (user) => {
+    this.props.controller.unSubscribeFromAllEvents(user)
   }
 
   //subscribe portal on papers
@@ -77,7 +77,7 @@ class App extends Component {
             deleteUser={this.deleteUser}
             subscribe={this.subscribe}
             unsubscribe={this.unsubscribe}
-            unSubscribeFromAllPapers={this.unSubscribeFromAllPapers}
+            unSubscribeFromAllEvents={this.unSubscribeFromAllEvents}
            />
         </div>
       </div>

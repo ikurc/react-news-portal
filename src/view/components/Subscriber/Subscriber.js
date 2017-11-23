@@ -22,7 +22,7 @@ class Subscriber extends Component {
 
     deleteUser = () => {
       let user = this.props.user
-      this.props.unSubscribeFromAllPapers(user.handleUpdate)
+      this.props.unSubscribeFromAllEvents(user.handleUpdate)
       this.props.deleteUser(user.ID)
     }
 

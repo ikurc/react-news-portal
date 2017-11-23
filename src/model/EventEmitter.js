@@ -24,7 +24,7 @@ class EventEmitter {
 		return readers ? readers.includes(fn) : false
 	}
 
-	unSubscribeFromAllPapers = (user) => {
+	unSubscribeFromAllEvents = (user) => {
 		for (let key in this.events) {
 			this.events[key] = this.events[key].filter(u => u !== user)
 		}

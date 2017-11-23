@@ -1,7 +1,9 @@
+import generateID from './generateID'
+
 class User {
 	constructor(name) {
 		this.name = name;
-		this.ID = User.generateID()
+		this.ID = generateID()
 		this.news = []
 	}
 
