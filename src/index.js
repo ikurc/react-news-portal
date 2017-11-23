@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import Portal from './model/Portal'
-import Controller from './control/Controller'
+import Controller from './controller/Controller'
 import Storage from './model/Storage'
 
 import Paper from './model/Paper'

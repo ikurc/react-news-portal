@@ -8,16 +8,7 @@ const Publishers = (props) => {
 
   return (
     <div className="publishers">
-      {papers.map((paper,i) => {
-        return (
-          <Publisher
-            key={i}
-            paper={paper}
-            addNews={props.addNews}
-            getPaperNews={props.getPaperNews}
-          />
-        )
-      })}
+      {papers.map((paper,i) => <Publisher key={i} paper={paper} addNews={props.addNews} getPaperNews={props.getPaperNews}/>)}
     </div>
   )
 }

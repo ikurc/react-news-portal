@@ -5,9 +5,10 @@ class Portal extends EventEmitter {
 		super();
 		this.name = name
 		this.storage = storage
-		this.handlers = [] //views updateState methods
+		this.handlers = [] //view`s updateState methods
 	}
 
+	// subscribe updateState method
 	on = (fn) => {
 		this.handlers.push(fn)
 	}

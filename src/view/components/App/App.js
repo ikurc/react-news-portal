@@ -36,10 +36,6 @@ class App extends Component {
     this.props.controller.addNews(news)
   }
 
-  // getFromServer = (news) => {
-  //   this.props.controller.addNews(news)
-  // }
-
   subscribe = (paper, user) => {
     this.props.controller.subscribe(paper,user)
   }
@@ -52,6 +48,7 @@ class App extends Component {
     this.props.controller.unSubscribeFromAllPapers(user)
   }
 
+  //subscribe portal on papers
   subscribeOnPaper = (papers) => {
     this.props.controller.subscribeOnPaper(papers)
   }

@@ -8,21 +8,18 @@ class Subscriber extends Component {
             user = this.props.user.handleUpdate,
             status = portal.isSubscriber(paper.name, user)
 
-      status ? this.unSubscribeFromPaper(paper, user) :
-               this.subscribeOnPaper(paper, user)
+      status ? this.unsubscribe(paper, user) :
+               this.subscribe(paper, user)
     }
 
-    // Subscribe
-    subscribeOnPaper = (paper) => {
+    subscribe = (paper) => {
       this.props.subscribe(paper.name, this.props.user.handleUpdate)
     }
 
-    // Unsubscribe
-    unSubscribeFromPaper = (paper) => {
+    unsubscribe = (paper) => {
       this.props.unsubscribe(paper.name, this.props.user.handleUpdate)
     }
 
-    // Delete
     deleteUser = () => {
       let user = this.props.user
       this.props.unSubscribeFromAllPapers(user.handleUpdate)
