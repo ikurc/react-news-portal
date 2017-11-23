@@ -1,4 +1,4 @@
-import News from './News'
+import ServerRequest from './ServerRequest'
 
 class Paper {
 	constructor(name) {
@@ -19,21 +19,8 @@ class Paper {
 		if (handlers) handlers.forEach(handler => handler(this.name, data))
 	}
 
-	getFromServer = () => {
-		let link = 'https://jsonplaceholder.typicode.com/posts'
-
-		// Get news
-		return fetch(link).then(response => response.json())
-		.then(news => {
-			let random = Math.floor(news.length * Math.random())
-			return news[random] //get random article
-		})
-		.then(newsItem => {
-			let news = new News(newsItem.title, this)
-			this.notifyHandlers(news)
-			return news
-		})
-		.catch(error => console.log(error))
+	getFromServer = (requestURL, paper) => {
+    return ServerRequest.fetchNews(requestURL, paper);
 	}
 
 	getFromInput = (data) => {

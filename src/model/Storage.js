@@ -25,7 +25,6 @@ class Storage {
     return this.users
   }
 
-
   // News methods
   addNews(newsObj){
     this.news.push(newsObj)

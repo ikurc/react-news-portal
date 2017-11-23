@@ -17,9 +17,32 @@ class Publisher extends Component {
   }
 
   handleServerRequest = () => {
-    let paper = this.props.paper
-    paper.getFromServer().then(data => this.props.addNews(data))
-  }
+       //hard code
+       const requestURLArr = ['http://localhost:3001/guardian',
+           'http://localhost:3001/independent',
+           'http://localhost:3001/nyt'];
+
+       const paper = this.props.paper;
+       let requestURL = null;
+
+       switch (paper.name){
+           case 'The Guardian':
+               requestURL = requestURLArr[0];
+               break;
+           case 'The Independent':
+               requestURL = requestURLArr[1];
+               break;
+           case 'The New York Times':
+               requestURL = requestURLArr[2];
+               break;
+           default:
+               break;
+       }
+
+       paper.getFromServer(requestURL, paper)
+           .then(data => this.props.addNews(data))
+
+   }
 
   handleSubmit = (e) => {
     let value = this.state.inputValue,
