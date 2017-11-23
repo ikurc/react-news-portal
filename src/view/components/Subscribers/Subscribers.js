@@ -13,13 +13,12 @@ class Subscribers extends Component {
       options: ['Human', 'Robot']
     }
   }
+  handleInputChange = (e) => {
+    this.setState({inputValue: e.target.value})
+  }
 
   clearInput = () => {
     this.setState({inputValue: ''})
-  }
-
-  handleInputChange = (e) => {
-    this.setState({inputValue: e.target.value})
   }
 
   handleSelectChange = (e) => {
@@ -36,12 +35,12 @@ class Subscribers extends Component {
     if ((isLeftClick || isEnter) && inputValue) {
       switch (selectValue) {
         case "Human":
-          let human = new Human(inputValue) // New Human with name (inputValue)
+          let human = new Human(inputValue) // New Human with name inputValue
           this.props.addUser(human)
           break
 
         case "Robot":
-          let robot = new Robot(inputValue) // New Robot with name (inputValue)
+          let robot = new Robot(inputValue) // New Robot with name inputValue
           this.props.addUser(robot)
           break
         default:
@@ -57,6 +56,7 @@ class Subscribers extends Component {
           papers = this.props.papers
 
     const inputValue = this.state.inputValue,
+          selectValue = this.state.selectValue,
           options = this.state.options
 
     return (
@@ -77,6 +77,7 @@ class Subscribers extends Component {
               <Subscriber
                 key={i}
                 user={user}
+                userType={selectValue}
                 portal={portal}
                 papers={papers}
                 subscribe={this.props.subscribe}

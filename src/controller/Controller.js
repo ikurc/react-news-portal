@@ -28,13 +28,13 @@ class Controller {
     this.model.trigger()
   }
 
-  subscribeOnPaper(papers) {
-    papers.forEach(paper => paper.subscribe(this.model.notify))
+  unSubscribeFromAllPapers(user) {
+    this.model.unSubscribeFromAllPapers(user)
     this.model.trigger()
   }
 
-  unSubscribeFromAllPapers(user) {
-    this.model.unSubscribeFromAllPapers(user)
+  subscribeOnPaper(papers) {
+    papers.forEach(paper => paper.subscribe(this.model.notify))
     this.model.trigger()
   }
 }

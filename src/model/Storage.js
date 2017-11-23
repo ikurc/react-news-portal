@@ -12,6 +12,11 @@ class Storage {
     }
   }
 
+  deleteUser(ID){
+    let usersList = this.users;
+    this.users = usersList.filter(user => user.ID !== ID)
+  }
+
   getUser(ID) {
     return this.users.filter(user => user.ID === ID)[0]
   }
@@ -20,14 +25,15 @@ class Storage {
     return this.users
   }
 
-  deleteUser(ID){
-    let usersList = this.users;
-    this.users = usersList.filter(user => user.ID !== ID)
-  }
 
   // News methods
   addNews(newsObj){
     this.news.push(newsObj)
+  }
+
+  deleteNews(ID){
+    let newsList = this.news
+    this.news = newsList.filter(news => news.ID !== ID)
   }
 
   getNews(ID) {
@@ -40,11 +46,6 @@ class Storage {
 
   getPaperNews = (paper) => {
     return this.news.filter(news => news.paper === paper)
-  }
-
-  deleteNews(ID){
-    let newsList = this.news;
-    this.news = newsList.filter(news => news.ID !== ID)
   }
 }
 
