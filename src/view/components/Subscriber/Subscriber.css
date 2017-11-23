@@ -89,3 +89,7 @@
   cursor: pointer;
   padding: 5px 16px;
 }
+
+.subscriber-robot .news-section {
+  font-size: 10px;
+}

@@ -56,7 +56,6 @@ class Subscribers extends Component {
           papers = this.props.papers
 
     const inputValue = this.state.inputValue,
-          selectValue = this.state.selectValue,
           options = this.state.options
 
     return (
@@ -77,7 +76,6 @@ class Subscribers extends Component {
               <Subscriber
                 key={i}
                 user={user}
-                userType={selectValue}
                 portal={portal}
                 papers={papers}
                 subscribe={this.props.subscribe}

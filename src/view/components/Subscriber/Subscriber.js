@@ -28,10 +28,10 @@ class Subscriber extends Component {
 
     render() {
       const portal = this.props.portal,
-            papers = this.props.papers,
-            user = this.props.user
+            papers = this.props.papers
 
-      const userName = user.name,
+      const user = this.props.user,
+            userName = user.name,
             userNews = user.news
 
       // User`s subscriptions
@@ -49,7 +49,7 @@ class Subscriber extends Component {
       return (
         <div className="subscriber">
           <span className='subscriber-close' onClick={this.deleteUser}></span>
-        <span className="subscriber-name">{userName}</span>
+          <span className="subscriber-name">{userName}</span>
 
           <div className="subscriptions-wrapper">
             <div className="subscriptions">{subscriptions}</div>
