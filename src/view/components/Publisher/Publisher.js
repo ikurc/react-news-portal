@@ -16,34 +16,6 @@ class Publisher extends Component {
     this.setState({inputValue: ''})
   }
 
-  handleServerRequest = () => {
-       //hard code
-       const requestURLArr = ['http://localhost:3001/guardian',
-           'http://localhost:3001/independent',
-           'http://localhost:3001/nyt'];
-
-       const paper = this.props.paper;
-       let requestURL = null;
-
-       switch (paper.name){
-           case 'The Guardian':
-               requestURL = requestURLArr[0];
-               break;
-           case 'The Independent':
-               requestURL = requestURLArr[1];
-               break;
-           case 'The New York Times':
-               requestURL = requestURLArr[2];
-               break;
-           default:
-               break;
-       }
-
-       paper.getFromServer(requestURL, paper)
-           .then(data => this.props.addNews(data))
-
-   }
-
   handleSubmit = (e) => {
     let value = this.state.inputValue,
         paper = this.props.paper,
@@ -76,8 +48,6 @@ class Publisher extends Component {
           <input className="publisher-input" placeholder="type news title..." value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleSubmit} type="text"/>
           <button className="publisher-btn publisher-send-btn" onClick={this.handleSubmit}>Send</button>
         </div>
-
-        <button className="publisher-btn publisher-server-btn" onClick={this.handleServerRequest}>Get from server</button>
       </div>
     )
   }

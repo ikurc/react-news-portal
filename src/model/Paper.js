@@ -1,5 +1,3 @@
-import ServerRequest from './ServerRequest'
-
 class Paper {
 	constructor(name) {
 		this.name = name
@@ -17,10 +15,6 @@ class Paper {
 	notifyHandlers = (data) => {
 		let handlers = this.handlers
 		if (handlers) handlers.forEach(handler => handler(this.name, data))
-	}
-
-	getFromServer = (requestURL, paper) => {
-    return ServerRequest.fetchNews(requestURL, paper);
 	}
 
 	getFromInput = (data) => {
