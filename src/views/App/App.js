@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Header from '../Header/Header.js'
-import Publishers from '../Publishers/Publishers.js'
-import Subscribers from '../Subscribers/Subscribers.js'
+import Header from '../components/Header/Header'
+import Publishers from '../components/Publishers/Publishers'
+import Subscribers from '../components/Subscribers/Subscribers'
 import './App.css'
 
 class App extends Component {
