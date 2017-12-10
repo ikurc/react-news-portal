@@ -41,16 +41,16 @@ class App extends Component {
   // }
   //
   // // Controller methods
-  // addUser = (user) => {
-  //   this.props.controller.addUser(user)
-  // }
+  addUser = (user) => {
+    Actions.addUser(user)
+  }
   //
   // deleteUser = (user) => {
   //   this.props.controller.deleteUser(user)
   // }
   //
   addNews = (news) => {
-    Actions.ADD_NEWS(news)
+    Actions.addNews(news)
   }
   //
   // subscribe = (paper, user) => {
@@ -92,16 +92,16 @@ class App extends Component {
             addNews={addNews}
             getPaperNews={getPaperNews}
           />
-          {/* <Subscribers
+          <Subscribers
             portal={portal}
             users={users}
             papers={papers}
             addUser={this.addUser}
-            deleteUser={this.deleteUser}
-            subscribe={this.subscribe}
-            unsubscribe={this.unsubscribe}
-            unSubscribeFromAllEvents={this.unSubscribeFromAllEvents}
-           /> */}
+            // deleteUser={this.deleteUser}
+            // subscribe={this.subscribe}
+            // unsubscribe={this.unsubscribe}
+            // unSubscribeFromAllEvents={this.unSubscribeFromAllEvents}
+           />
         </div>
       </div>
     )

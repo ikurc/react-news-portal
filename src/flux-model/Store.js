@@ -23,6 +23,11 @@ class Store extends EventEmitter {
     this.emit('change')
   }
 
+  addUser = (user) => {
+    this.users.push(user)
+    this.emit('change')
+  }
+
   getUsers = () => {
     return this.users
   }
@@ -47,6 +52,9 @@ class Store extends EventEmitter {
     switch (action.type) {
       case 'ADD_NEWS':
         this.addNews(action.news)
+        break;
+      case 'ADD_USER':
+        this.addUser(action.user)
         break;
     }
   }
