@@ -19,7 +19,12 @@ class App extends Component {
   }
 
   updateState = () => {
-    this.setState({})
+    this.setState({
+      portal: this.props.store.getPortal(),
+      papers: this.props.store.getPapers(),
+      users: this.props.store.getUsers(),
+      news: this.props.store.getNews()
+    })
   }
 
   componentDidMount() {
@@ -44,26 +49,30 @@ class App extends Component {
   addUser = (user) => {
     Actions.addUser(user)
   }
-  //
-  // deleteUser = (user) => {
-  //   this.props.controller.deleteUser(user)
-  // }
-  //
+
+  deleteUser = (ID) => {
+    Actions.deleteUser(ID)
+  }
+
   addNews = (news) => {
     Actions.addNews(news)
   }
-  //
-  // subscribe = (paper, user) => {
-  //   this.props.controller.subscribe(paper,user)
-  // }
-  //
-  // unsubscribe = (paper, user) => {
-  //   this.props.controller.unsubscribe(paper, user)
-  // }
-  //
-  // unSubscribeFromAllEvents = (user) => {
-  //   this.props.controller.unSubscribeFromAllEvents(user)
-  // }
+
+  subscribe = (paper, user) => {
+    Actions.subscribe(paper,user)
+  }
+
+  unsubscribe = (paper, user) => {
+    Actions.unsubscribe(paper, user)
+  }
+
+  unSubscribeFromAllEvents = (user) => {
+    Actions.unSubscribeFromAllEvents(user)
+  }
+
+  getPaperNews = (paper) => {
+    Actions.getPaperNews(paper)
+  }
   //
   // //subscribe portal on papers
   // subscribeOnPaper = (papers) => {
@@ -79,9 +88,7 @@ class App extends Component {
     const users = this.state.users
 
     const store = this.props.store
-
     const getPaperNews = store.getPaperNews
-    const addNews = store.addNews
 
     return (
       <div className="App">
@@ -89,7 +96,7 @@ class App extends Component {
         <div className="content">
           <Publishers
             papers={papers}
-            addNews={addNews}
+            addNews={this.addNews}
             getPaperNews={getPaperNews}
           />
           <Subscribers
@@ -97,10 +104,10 @@ class App extends Component {
             users={users}
             papers={papers}
             addUser={this.addUser}
-            // deleteUser={this.deleteUser}
-            // subscribe={this.subscribe}
-            // unsubscribe={this.unsubscribe}
-            // unSubscribeFromAllEvents={this.unSubscribeFromAllEvents}
+            deleteUser={this.deleteUser}
+            subscribe={this.subscribe}
+            unsubscribe={this.unsubscribe}
+            unSubscribeFromAllEvents={this.unSubscribeFromAllEvents}
            />
         </div>
       </div>

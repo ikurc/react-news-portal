@@ -15,10 +15,41 @@ const Actions = {
     })
   },
 
-  delUser(id) {
+  deleteUser(ID) {
     Dispatcher.dispatch({
       type: 'DEL_USER',
-      id
+      ID
+    })
+  },
+
+  subscribe(paper, user) {
+    Dispatcher.dispatch({
+      type: 'SUBSCRIBE',
+      paper,
+      user
+    })
+  },
+
+  unsubscribe(paper, user) {
+    Dispatcher.dispatch({
+      type: 'UNSUBSCRIBE',
+      paper,
+      user
+    })
+  },
+
+  getPaperNews(paper) {
+    console.log("Actions")
+    Dispatcher.dispatch({
+      type: 'GET_PAPER_NEWS',
+      paper
+    })
+  },
+
+  unSubscribeFromAllEvents(user) {
+    Dispatcher.dispatch({
+      type: 'UNSUB_ALL_EVENTS',
+      user
     })
   }
 }

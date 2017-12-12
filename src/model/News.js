@@ -3,7 +3,7 @@ import generateID from './generateID'
 class News {
   constructor(title, paper) {
     this.title = title
-    this.paperName = paper.name
+    this.paper = paper
     this.ID = generateID()
   }
 

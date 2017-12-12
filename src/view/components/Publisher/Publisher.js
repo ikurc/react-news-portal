@@ -34,7 +34,7 @@ class Publisher extends Component {
   render() {
     const paper = this.props.paper,
           paperName = paper.name,
-          paperNews = this.props.getPaperNews(paperName).reverse() //correct order
+          paperNews = this.props.getPaperNews(paper).reverse() //correct order
 
     return (
       <div className="publisher">
