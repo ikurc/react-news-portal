@@ -1,24 +1,40 @@
-import EventEmitter from "./EventEmitter"
-
-class Portal extends EventEmitter {
-	constructor(name, storage) {
-		super();
+class Portal {
+	constructor(name) {
+		this.events = {}
 		this.name = name
-		this.storage = storage
-		this.handlers = [] //view`s updateState methods
 	}
 
-	// subscribe updateState method
-	on = (fn) => {
-		this.handlers.push(fn)
+	subscribe = (eventType, fn) => {
+		let readers = this.events[eventType]
+
+		if (!readers) {
+			this.events[eventType] = []
+		}
+		this.events[eventType].push(fn)
 	}
 
-	off = (fnToRemove) => {
-		this.handlers = this.handlers.filter(fn => fn !== fnToRemove)
+	unSubscribe = (eventType, fnToRemove) => {
+		let readers = this.events[eventType]
+		this.events[eventType] = readers.filter(fn => fn !== fnToRemove)
+		// delete if last feature next --->
 	}
 
-	trigger = (data) => {
-		this.handlers.forEach(fn => fn(data))
+	// Check if subscriber
+	isSubscriber = (eventType, fn) => {
+		let readers = this.events[eventType]
+		return readers ? readers.includes(fn) : false
+	}
+
+	unSubscribeFromAllEvents = (user) => {
+		for (let key in this.events) {
+			this.events[key] = this.events[key].filter(u => u !== user)
+		}
+	}
+
+	// Notify all readers
+	notify = (eventType, data) => {
+		let readers = this.events[eventType]
+		if (readers) readers.forEach(reader => reader(data))
 	}
 }
 

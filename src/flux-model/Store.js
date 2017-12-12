@@ -15,58 +15,48 @@ class Store extends EventEmitter {
     this.news = []
   }
 
-  addNews = (news) => {
+  addNews(news) {
     this.news.push(news)
-    this.emit('change')
   }
 
-  addUser = (user) => {
+  addUser(user) {
     this.users.push(user)
-    this.emit('change')
   }
 
-  subscribe = (paper, user) => {
+  subscribe(paper, user) {
     this.portal.subscribe(paper, user)
-    this.emit('change')
   }
 
-  unSubscribe = (paper, user) => {
+  unSubscribe(paper, user) {
     this.portal.unSubscribe(paper, user)
-    this.emit('change')
   }
 
-  unSubscribeFromAllEvents = (user) => {
+  unSubscribeFromAllEvents(user) {
     this.portal.unSubscribeFromAllEvents(user)
-    this.emit('change')
   }
 
-  deleteUser = (ID) => {
-    console.log(this.users)
+  deleteUser(ID) {
     let usersList = this.users;
     this.users = usersList.filter(user => user.ID !== ID)
-    console.log(this.users)
-    this.emit('change')
   }
 
-  getUsers = () => {
+  getUsers() {
     return this.users
   }
 
-  getPapers = () => {
+  getPapers() {
     return this.papers
   }
 
-  getNews = () => {
+  getNews() {
     return this.news
   }
 
   getPaperNews = (paper) => {
-
-    console.log("sad")
     return this.news.filter(news => news.paper === paper)
   }
 
-  getPortal = () => {
+  getPortal() {
     return this.portal
   }
 
@@ -78,26 +68,34 @@ class Store extends EventEmitter {
 
       case 'ADD_USER':
         this.addUser(action.user)
+        this.emit('change')
         break;
 
       case 'DEL_USER':
         this.deleteUser(action.ID)
+        this.emit('change')
         break;
 
       case 'SUBSCRIBE':
         this.subscribe(action.paper, action.user)
+        this.emit('change')
         break;
 
       case 'UNSUBSCRIBE':
         this.unSubscribe(action.paper, action.user)
+        this.emit('change')
         break;
 
       case 'GET_PAPER_NEWS':
         this.getPaperNews(action.paper)
+        this.emit('change')
         break;
 
       case 'UNSUB_ALL_EVENTS':
         this.unSubscribeFromAllEvents(action.user)
+        this.emit('change')
+        break;
+      default:
         break;
     }
   }
