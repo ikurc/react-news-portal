@@ -39,10 +39,23 @@ const Actions = {
   },
 
   getPaperNews(paper) {
-    console.log("Actions")
     Dispatcher.dispatch({
       type: 'GET_PAPER_NEWS',
       paper
+    })
+  },
+
+  getUserNews(ID) {
+    Dispatcher.dispatch({
+      type: 'GET_USER_NEWS',
+      ID
+    })
+  },
+
+  subscribePortalOnPapers(papers) {
+    Dispatcher.dispatch({
+      type: 'SUB_PORTAL_ON_PAPERS',
+      papers
     })
   },
 
@@ -51,7 +64,7 @@ const Actions = {
       type: 'UNSUB_ALL_EVENTS',
       user
     })
-  }
+  },
 }
 
 export default Actions

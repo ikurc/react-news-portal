@@ -1,4 +1,5 @@
 import { EventEmitter } from 'events'
+import Dispatcher from './Dispatcher'
 import Paper from '../model/Paper'
 import Portal from '../model/Portal'
 
@@ -17,27 +18,38 @@ class Store extends EventEmitter {
 
   addNews(news) {
     this.news.push(news)
+    this.emit('change')
   }
 
   addUser(user) {
     this.users.push(user)
+    this.emit('change')
   }
 
   subscribe(paper, user) {
     this.portal.subscribe(paper, user)
+    this.emit('change')
   }
 
   unSubscribe(paper, user) {
     this.portal.unSubscribe(paper, user)
+    this.emit('change')
+  }
+
+  subscribePortalOnPapers(papers) {
+    papers.forEach(paper => paper.subscribe(this.portal.notify))
+    this.emit('change')
   }
 
   unSubscribeFromAllEvents(user) {
     this.portal.unSubscribeFromAllEvents(user)
+    this.emit('change')
   }
 
   deleteUser(ID) {
     let usersList = this.users;
     this.users = usersList.filter(user => user.ID !== ID)
+    this.emit('change')
   }
 
   getUsers() {
@@ -56,6 +68,11 @@ class Store extends EventEmitter {
     return this.news.filter(news => news.paper === paper)
   }
 
+  getUserNews = (ID) => {
+    let user = this.users.filter(u => u.ID == ID)[0]
+    return user.getUserNews()
+  }
+
   getPortal() {
     return this.portal
   }
@@ -68,33 +85,36 @@ class Store extends EventEmitter {
 
       case 'ADD_USER':
         this.addUser(action.user)
-        this.emit('change')
         break;
 
       case 'DEL_USER':
         this.deleteUser(action.ID)
-        this.emit('change')
         break;
 
       case 'SUBSCRIBE':
         this.subscribe(action.paper, action.user)
-        this.emit('change')
         break;
 
       case 'UNSUBSCRIBE':
         this.unSubscribe(action.paper, action.user)
-        this.emit('change')
         break;
 
       case 'GET_PAPER_NEWS':
         this.getPaperNews(action.paper)
-        this.emit('change')
+        break;
+
+      case 'GET_USER_NEWS':
+        this.getUserNews(action.ID)
         break;
 
       case 'UNSUB_ALL_EVENTS':
         this.unSubscribeFromAllEvents(action.user)
-        this.emit('change')
         break;
+
+      case 'SUB_PORTAL_ON_PAPERS':
+        this.subscribePortalOnPapers(action.papers)
+        break;
+
       default:
         break;
     }

@@ -9,4 +9,4 @@ import './index.css'
 const store = new Store()
 Dispatcher.register(store.handle)
 
-ReactDOM.render(<App store={store} actions={actions}/>, document.getElementById('root'))
+ReactDOM.render(<App store={store}/>, document.getElementById('root'))

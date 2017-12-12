@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import Header from '../Header/Header.js'
 import Publishers from '../Publishers/Publishers.js'
 import Subscribers from '../Subscribers/Subscribers.js'
@@ -29,23 +30,9 @@ class App extends Component {
 
   componentDidMount() {
     this.props.store.on('change', this.updateState)
+    this.subscribePortalOnPapers(this.state.papers)
   }
 
-  //
-  // componentDidMount() {
-  //   const portal = this.props.portal,
-  //         storage = portal.storage,
-  //         papers = storage.papers
-  //
-  //   this.subscribeOnPaper(papers) // Portal automatically subscribes itself on 3 default papers from storage`s "papers" array
-  //   portal.on(this.updateState) // subscribe "updateState" method of VIEW on model changes
-  // }
-  //
-  // componentWillUnmount() {
-  //   this.props.portal.off(this.updateState) // unsubscribe "updateState" method of VIEW on model changes when componet dies
-  // }
-  //
-  // // Controller methods
   addUser = (user) => {
     Actions.addUser(user)
   }
@@ -66,6 +53,10 @@ class App extends Component {
     Actions.unsubscribe(paper, user)
   }
 
+  subscribePortalOnPapers = (papers) => {
+    Actions.subscribePortalOnPapers(papers)
+  }
+
   unSubscribeFromAllEvents = (user) => {
     Actions.unSubscribeFromAllEvents(user)
   }
@@ -73,11 +64,10 @@ class App extends Component {
   getPaperNews = (paper) => {
     Actions.getPaperNews(paper)
   }
-  //
-  // //subscribe portal on papers
-  // subscribeOnPaper = (papers) => {
-  //   this.props.controller.subscribeOnPaper(papers)
-  // }
+
+  getUserNews = (ID) => {
+    Actions.getUserNews(ID)
+  }
 
   render() {
     console.log(this.state)
@@ -107,6 +97,7 @@ class App extends Component {
             deleteUser={this.deleteUser}
             subscribe={this.subscribe}
             unsubscribe={this.unsubscribe}
+            getUserNews={this.getUserNews}
             unSubscribeFromAllEvents={this.unSubscribeFromAllEvents}
            />
         </div>

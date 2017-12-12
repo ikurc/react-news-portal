@@ -81,6 +81,7 @@ class Subscribers extends Component {
                 subscribe={this.props.subscribe}
                 unsubscribe={this.props.unsubscribe}
                 deleteUser={this.props.deleteUser}
+                getUserNews={this.props.getUserNews}
                 unSubscribeFromAllEvents={this.props.unSubscribeFromAllEvents}/>
               )
             })}
